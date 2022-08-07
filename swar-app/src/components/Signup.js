@@ -34,7 +34,9 @@ const theme = createTheme({
     },
   },
 });
+
 function Signup() {
+
   const formik = useFormik({
     initialValues: {
       email: 'foobar@example.com',
@@ -45,6 +47,7 @@ function Signup() {
       alert(JSON.stringify(values, null, 2));
     },
   });
+
      return (
         <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -133,8 +136,6 @@ function Signup() {
               </Button>
               </form>
             
-
-
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
