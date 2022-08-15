@@ -1,23 +1,28 @@
 import React from 'react'
-import {Grid,Paper,Avatar, TextField,FormControlLabel,Checkbox,Button, Typography, Link} from '@mui/material';
+import {Grid,Paper,Avatar, TextField,FormControlLabel,Checkbox,Button, Typography, Link,Box} from '@mui/material';
+
+
 function Login({handleChange}) { 
     const paperstyle={padding:20,height: '80vh', width: 450, margin :"0 auto"} 
     const avatarstyle={backgroundColor :'#1bb7de'}
     const tstyle={margin:'5px 0'}
     const btstyle={margin:'5px 0'}
+
   return (
     <Grid>
         <Paper elevation={2} style={paperstyle}>
             <Grid align='center'>
             <Avatar style={avatarstyle}>
             </Avatar>
-        <h2>Sign In</h2>
+            <h2>Sign In</h2>
             </Grid>
-            <TextField label='username' placeholder='Enter Username' style={tstyle} fullWidth required/>
-            <TextField label='Email' placeholder='Enter Email' style={tstyle} fullWidth required />
-            <TextField label='password' placeholder='Enter Password'type='password'
-            style={tstyle}
-            fullWidth required/>
+            <Box component='form' no noValidate id='login-form' >
+            <TextField name='username' id='username'label='username'
+             placeholder='Enter Username' 
+             style={tstyle} fullWidth required/>
+            <TextField name='email' id='email' label='Email' placeholder='Enter Email' style={tstyle} fullWidth required />
+            <TextField name='password' id='password' label='password' placeholder='Enter Password'type='password'
+            style={tstyle} fullWidth required/>
             <FormControlLabel control={
                    <Checkbox
                  name='checkbox'
@@ -29,6 +34,7 @@ function Login({handleChange}) {
         <Button type='submit' 
         sx={{ color: 'black', backgroundColor: 'pink', borderColor: 'black',mt:3,mb:2} }
        variant= 'contained' fullWidth style={btstyle}> Sign In</Button>
+       </Box>
         <Typography >
           <Link href='#'> Forgot password?</Link>
           </Typography>
