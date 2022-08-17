@@ -27,7 +27,6 @@ const [state,setState]= useState({
   playing : true
 })
 
-const {playing} = state;
 
 const playerRef = useRef(null);
 

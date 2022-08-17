@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../src/Containers/Main';
+import Main from '../src/SignIn screen/Main';
 import Dashboard from './Pages/Dashboard';
 import Home from './Pages/Home';
 import Library from './Pages/Library';

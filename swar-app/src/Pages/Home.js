@@ -8,10 +8,10 @@ function Home() {
         sx={{ flexGrow: 1, bgcolor: 'white', p: 3 ,width: `calc(100% - 240px)`}}
       >
         <Toolbar/>
-        <Typography paragraph>
+        <Typography component={'span'} paragraph>
           HOME
         </Typography>
-        <Typography paragraph>
+        <Typography component={'span'} paragraph>
           SHAAN
         </Typography>
       </Box>

@@ -51,9 +51,9 @@ setValue(newValue)
     <div className='songlength'>
     <Box sx={{ width: 600 }}>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-        <Typography variant='content' color='grey'> 0:45</Typography>
+        <Typography component={'span'} variant='content' color='grey'> 0:45</Typography>
         <Slider aria-label="Volume" value={value} onChange={handleChange} size="small" sx={{color:'black'}}/>
-        <Typography variant='content'> 4:45</Typography>
+        <Typography component={'span'} variant='content'> 4:45</Typography>
        </Stack>
        </Box>
     </div>
