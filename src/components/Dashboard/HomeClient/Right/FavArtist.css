@@ -1,0 +1,30 @@
+.favartist{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.artist{
+    display: flex;
+    align-self: center;
+    margin-bottom: 20px;
+    
+}
+.left_artist{
+    flex: 0.2;
+}
+.center_artist{
+    flex: 0.5;
+}
+.right_artist{
+    flex: 0.3;
+    align-content: right;
+    margin-left: 10px;
+}
+
+
+.profile{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-right: 15px;
+}

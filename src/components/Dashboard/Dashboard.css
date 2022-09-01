@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    position: sticky;
+}
+
+.others{
+    flex: 4;
+}
+.player{
+    display: flex;
+}

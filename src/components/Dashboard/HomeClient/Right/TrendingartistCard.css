@@ -1,0 +1,28 @@
+.Container_TAC{
+    width: 100vw;
+    height: 100vh;
+    max-height: 380px;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+	border-radius: 1.5em;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	padding-top: 5px;
+	position: relative;
+}
+
+
+.TrendingartistCard{
+    display: flex;
+    flex-direction: column;
+	border-radius: 1.5em;
+	padding-top: 2px;
+	position: relative;
+	text-align: center;
+}
+
+.Artist_Image{
+    border-radius: 1.5em;
+    padding: 1em;
+}
