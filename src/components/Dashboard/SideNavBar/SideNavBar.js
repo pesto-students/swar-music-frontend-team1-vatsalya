@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,UseRef, useRef}from 'react'
 import  "./SideNavBar.css"
 import DensitySmallIcon from '@mui/icons-material/DensitySmall';
 import { LineStyle} from '@material-ui/icons'
@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import AutoStoriesSharpIcon from '@mui/icons-material/AutoStoriesSharp';
 import HeadphonesSharpIcon from '@mui/icons-material/HeadphonesSharp';
 import PodcastsSharpIcon from '@mui/icons-material/PodcastsSharp';
-
 function SideNavBar() {
   return (
     <div className="SideBar" >
@@ -45,6 +44,7 @@ function SideNavBar() {
             <p >Podcasts</p>
           </li>
           </Link>
+
         </ul>
       </div>
     </div>

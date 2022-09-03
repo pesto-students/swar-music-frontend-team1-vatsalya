@@ -7,8 +7,23 @@ import { SearchRounded } from '@material-ui/icons';
 import Songstable from '../HomeClient/SongsTable/Songstable'
 import Datagridtable from './SongsTable/Datagridtable';
 import FavArtist from './Right/FavArtist';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: grey[800],
+    }
+  }
+});
+
+
+
+
 function HomeClient() {
   return (
+    <ThemeProvider theme={theme}>
     <div className='home'>
       <div className='left'>
       <div className="search__container">
@@ -28,7 +43,7 @@ function HomeClient() {
           <FavArtist/>
         </div>
       </div>
-   
+      </ThemeProvider>
 
   )
 

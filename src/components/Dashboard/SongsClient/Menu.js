@@ -4,15 +4,15 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Addtoplaylist from './Addtoplaylist';
+import { Link } from 'react-router-dom';
+const ITEM_HEIGHT = 20;
 
-const ITEM_HEIGHT = 48;
+ function MyMenu() {
 
-export default function LongMenu() {
-const [openpopup,setOpenPopup] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -45,11 +45,13 @@ const [openpopup,setOpenPopup] = useState(false);
           },
         }}
       >
+        <Link to="add">
           <MenuItem  selected={'Pyxis'} onClick={handleClose}>
-          <Addtoplaylist openPopup={openpopup} setOpenPopup={setOpenPopup}>
-        </Addtoplaylist>
+          Add to Playlist
           </MenuItem>
+          </Link>
       </Menu>
     </div>
   );
 }
+export default MyMenu

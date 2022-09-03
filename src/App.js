@@ -13,6 +13,7 @@ import HomeClient from './components/Dashboard/SongsClient/SongsClient';
 import SongsClient from './components/Dashboard/SongsClient/SongsClient';
 import Addtoplaylist from './components/Dashboard/SongsClient/Addtoplaylist'
 import { PrivateRoutes,PrivateAdminRoutes } from './components/Login/PrivateRouter';
+import Menu from './components/Dashboard/SongsClient/Menu';
 import { token, user } from './components/Login/Utility/authenticatinReducer';
 
 function App() {
@@ -23,9 +24,12 @@ function App() {
     <Route path="home" element={<PrivateRoutes><Dashboard/></PrivateRoutes>}>
     <Route index element={<Dashboard/>}/>
     <Route path="" element={<HomeClient/>}/>
-    <Route path="songsList" element={<SongsClient/>}/>
     <Route path="audioBooks" element={<AudioBooks/>}/>
     <Route path="podcasts" element={<Podcasts/>}/>
+    <Route path="songsList" element={<SongsClient/>}>
+    <Route path="menu" element={<Menu/>}/>
+      <Route path="add" element={<Addtoplaylist/>}/>
+    </Route>
     </Route>
     <Route path="admin" element={<PrivateRoutes><Admin/></PrivateRoutes>}>
     <Route index element={<Admin/>}/>

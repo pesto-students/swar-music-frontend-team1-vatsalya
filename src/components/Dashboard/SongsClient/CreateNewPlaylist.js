@@ -1,16 +1,26 @@
-import React from 'react';
+import React,{useRef,useState} from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import DialogActions from '@mui/material/DialogActions';
 import CloseIcon from '@mui/icons-material/Close';
-import { Dialog ,Button, DialogTitle, DialogContent, Stack,  
-  Typography, IconButton, Fab, TextField} from '@mui/material';
-import Roundheart from './Roundheart.png';
 import AddIcon from '@mui/icons-material/Add';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { TextFields } from '@material-ui/icons';
+import { Dialog ,Button, DialogTitle, DialogContent,IconButton,TextField,makeStyles} from '@mui/material';
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+
+const NewButton = styled(Button)(()=>({
+  color: 'white', backgroundColor: 'black', borderColor: 'black', borderRadius: '20px',
+   padding:'0.5em 1.7em',
+   '&:hover': {
+    backgroundColor:'grey',
+    color:'white'
+  },
+  '&:focus':{
+    backgroundColor:'black',
+  }
+}));
+
+
+const NewDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
   },
@@ -19,7 +29,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const BootstrapDialogTitle = (props) => {
+const NewDialogTitle = (props) => {
   const { children, onClose, ...other } = props;
 
   return (
@@ -43,12 +53,13 @@ const BootstrapDialogTitle = (props) => {
   );
 };
 
-BootstrapDialogTitle.propTypes = {
+NewDialogTitle.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
 };
 
- function CreateNewPlaylist() {
+ function CreateNewPlaylist(props) {
+  const addPlaylist= props.addPlaylist
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -58,28 +69,66 @@ BootstrapDialogTitle.propTypes = {
     setOpen(false);
   };
 
+const [state,setState]=useState({
+  currentPlaylist:'home',
+  NewDialog:'false',
+  playlists:{
+    home : new Set(),
+    favorites: new Set(),
+  }
+})
+
+const playlistRef = useRef(null);
+
+// const addplaylist=e=>{
+//   e.preventdefault();
+//   const list = playlistRef.current.value;
+
+//   setState({
+//     ...state,
+//     NewDialog:false,
+//     playlist:{...state.playlists, [list]: new Set()}
+//   })
+// }
+
+
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-      Create New Playlist
-      </Button>
-      <BootstrapDialog
+             <NewButton autoFocus onClick={handleClickOpen}  variant='contained' startIcon={<AddIcon/>}>
+          Create New Playlist
+           </NewButton>
+           <form onSubmit={addPlaylist}>
+      <NewDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+        <NewDialogTitle id="customized-dialog-title" onClose={handleClose}>
           Create New Playlist
-        </BootstrapDialogTitle>
+        </NewDialogTitle>
+        
         <DialogContent dividers>
-        <TextField id="playlist"  placeholder='Give your playlist a Name' variant="outlined" />
+        <TextField id="playlist"  placeholder='Give your playlist a Name' variant="outlined"
+        ref={playlistRef}
+        sx={{
+          '&.MuiTextField-root':{
+            '&:hover': {
+              backgroundColor:'grey',
+              color:'white'
+            }
+          }
+
+        }}
+        />
         </DialogContent>
         <DialogActions >
-          <Button autoFocus onClick={handleClose} variant='contained'  sx={{borderRadius:'20px'}}>
-            Save
-          </Button>
+          <NewButton autoFocus onClick={handleClose} variant='contained'  type='submit' >
+            Create
+          </NewButton>
         </DialogActions>
-      </BootstrapDialog>
+       
+      </NewDialog>
+      </form>
     </div>
   );
 }

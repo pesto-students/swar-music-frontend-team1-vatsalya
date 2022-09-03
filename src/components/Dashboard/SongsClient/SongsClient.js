@@ -15,6 +15,21 @@ import Drake from '../HomeClient/Right/Drake.jpg';
 import Menu from './Menu';
 import Addtoplaylist from './Addtoplaylist';
 import CreateNewPlaylist from './CreateNewPlaylist';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: grey[900],
+    }
+  }
+});
+
+
+
+
 function QuickSearchToolbar() {
   return (
     <Box
@@ -163,13 +178,12 @@ function SongsClient() {
           console.log(url);
 
 return(
-
+<ThemeProvider theme={theme}>
   <div className="songsClient">
+    
     <Box sx={{ height: 800, width: '95%' ,mt:'30px'}}>
      <Addtoplaylist/>
-     <CreateNewPlaylist/>
-
-
+  
       <DataGrid
       disableColumnMenu
        borderRadius="25%" 
@@ -221,8 +235,8 @@ return(
     <div className="audioPlayer">
       <Footer url = {url} duration={duration} name={name}/>
     </div>
-  
 </div>
+</ThemeProvider>
       )
 }
 
