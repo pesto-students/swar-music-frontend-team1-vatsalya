@@ -7,6 +7,7 @@ import {Route,Routes } from 'react-router-dom';
 import HomeClient from './HomeClient/HomeClient'
 import AudioBooks from './AudioBooksClient/AudioBooks'
 import Podcasts from './Podcasts/Podcasts'
+import Playlist from './Playlist/Playlist'
 
 function Dashboard() {
   return (
@@ -20,6 +21,7 @@ function Dashboard() {
       <Route path="songsList" element={<SongsClient/>}/>
       <Route path="audiobooks" element={<AudioBooks/>}/>
       <Route path="podcasts" element={<Podcasts/>}/>
+      <Route path="playlist" element={<Playlist/>}/>
       </Routes>
       </div>
     </div>

@@ -8,13 +8,13 @@ import Users from './components/Admin/Users/Users';
 import Main from './components/Containers/Main';
 import AudioBooks from './components/Dashboard/AudioBooksClient/AudioBooks';
 import Dashboard from './components/Dashboard/Dashboard';
+import Playlist from './components/Dashboard/Playlist/Playlist';
 import Podcasts from './components/Dashboard/Podcasts/Podcasts';
 import HomeClient from './components/Dashboard/SongsClient/SongsClient';
 import SongsClient from './components/Dashboard/SongsClient/SongsClient';
-import Addtoplaylist from './components/Dashboard/SongsClient/Addtoplaylist'
 import { PrivateRoutes,PrivateAdminRoutes } from './components/Login/PrivateRouter';
-import Menu from './components/Dashboard/SongsClient/Menu';
 import { token, user } from './components/Login/Utility/authenticatinReducer';
+
 
 function App() {
   return (
@@ -22,14 +22,12 @@ function App() {
     <Routes>
     <Route path="/" element={<Main/>}/>
     <Route path="home" element={<PrivateRoutes><Dashboard/></PrivateRoutes>}>
-    <Route index element={<Dashboard/>}/>
-    <Route path="" element={<HomeClient/>}/>
-    <Route path="audioBooks" element={<AudioBooks/>}/>
-    <Route path="podcasts" element={<Podcasts/>}/>
-    <Route path="songsList" element={<SongsClient/>}>
-    <Route path="menu" element={<Menu/>}/>
-      <Route path="add" element={<Addtoplaylist/>}/>
-    </Route>
+      <Route index element={<Dashboard/>}/>
+      <Route path="" element={<HomeClient/>}/>
+      <Route path="audioBooks" element={<AudioBooks/>}/>
+      <Route path="podcasts" element={<Podcasts/>}/>
+      <Route path="songsList" element={<SongsClient/>}/>
+      <Route path="playlist" element={<Playlist/>}/>
     </Route>
     <Route path="admin" element={<PrivateRoutes><Admin/></PrivateRoutes>}>
     <Route index element={<Admin/>}/>

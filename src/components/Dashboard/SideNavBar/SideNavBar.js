@@ -1,7 +1,7 @@
 import React,{useState,UseRef, useRef}from 'react'
 import  "./SideNavBar.css"
 import DensitySmallIcon from '@mui/icons-material/DensitySmall';
-import { LineStyle} from '@material-ui/icons'
+import { FeaturedPlayListOutlined, LineStyle} from '@material-ui/icons'
 import { Link } from "react-router-dom";
 import AutoStoriesSharpIcon from '@mui/icons-material/AutoStoriesSharp';
 import HeadphonesSharpIcon from '@mui/icons-material/HeadphonesSharp';
@@ -44,7 +44,12 @@ function SideNavBar() {
             <p >Podcasts</p>
           </li>
           </Link>
-
+          <Link style={{textDecoration: 'none'}} to="/home/playlist">
+          <li className= "sidebarListItem" >
+            <FeaturedPlayListOutlined className="sideBarIcon"/>
+            <p >Playlist</p>
+          </li>
+          </Link>
         </ul>
       </div>
     </div>

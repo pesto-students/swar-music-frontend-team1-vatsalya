@@ -45,7 +45,7 @@ const ITEM_HEIGHT = 20;
           },
         }}
       >
-        <Link to="add">
+          <Link style={{textDecoration: 'none'}} to="/home/songslist/add">
           <MenuItem  selected={'Pyxis'} onClick={handleClose}>
           Add to Playlist
           </MenuItem>

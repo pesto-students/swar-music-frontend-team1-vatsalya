@@ -10,6 +10,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Modal from './Modal'
 import QueueMusicOutlinedIcon from '@mui/icons-material/QueueMusicOutlined';
 import './Addtoplaylist.css';
+import { Add } from '@mui/icons-material';
+
 const NewButton = styled(Button)(()=>({
   color: 'white', backgroundColor: 'black', borderColor: 'black', borderRadius: '20px',
    padding:'0.5em 1.7em',
@@ -71,7 +73,8 @@ NewDialogTitle.propTypes = {
 };
 
  function Addtoplaylist() {
-  const [open, setOpen] = React.useState(false);
+
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -105,9 +108,11 @@ NewDialogTitle.propTypes = {
 
   return (
     <div className='Playlist'>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <IconButton variant="outlined" onClick={handleClickOpen} sx={{ color:'blue'
+            }}> <Add/></IconButton>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
       Add to Playlist
-      </Button>
+      </Button> */}
       <NewDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

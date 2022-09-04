@@ -8,13 +8,11 @@ import { songAction } from './Utility/songsClientReducer';
 import Player from '../../Player/Player';
 import '../HomeClient/SongsTable/Datagridtable.css'
 import Footer from '../HomeClient/Footer/Footer';
-import { SearchRounded } from '@material-ui/icons';
 import axios from 'axios';
 import Avatar from "@mui/material/Avatar";
 import Drake from '../HomeClient/Right/Drake.jpg';
 import Menu from './Menu';
 import Addtoplaylist from './Addtoplaylist';
-import CreateNewPlaylist from './CreateNewPlaylist';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 
@@ -127,7 +125,7 @@ function QuickSearchToolbar() {
       renderCell: () => {
         return (
           <div>
-          <Menu sx={{color:'white'}}/>
+          <Addtoplaylist/>
           </div> );
       }
     }
@@ -180,10 +178,7 @@ function SongsClient() {
 return(
 <ThemeProvider theme={theme}>
   <div className="songsClient">
-    
     <Box sx={{ height: 800, width: '95%' ,mt:'30px'}}>
-     <Addtoplaylist/>
-  
       <DataGrid
       disableColumnMenu
        borderRadius="25%" 
