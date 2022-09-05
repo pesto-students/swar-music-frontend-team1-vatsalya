@@ -1,4 +1,5 @@
-import React ,{useState,useRef}from 'react';
+import React ,{useState,useRef,useContext}from 'react';
+import { StoreContext } from '../Dashboard';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import DialogActions from '@mui/material/DialogActions';
@@ -83,12 +84,14 @@ NewDialogTitle.propTypes = {
     setOpen(false);
   };
 
-  const [state, setState] = useState({
-    currentPlaylist: 'liked songs',
+  const [addState, setState] = useState({
+    currentPlaylist: ' my liked songs ',
     modal: false,
     playlists: {
     },
   });
+
+  const{state,dispatch}=useContext(StoreContext)
   const playlistRef = useRef(null)
   const playlists = Object.keys(state.playlists)
 
@@ -96,15 +99,17 @@ NewDialogTitle.propTypes = {
     e.preventDefault()
     const list = playlistRef.current.value
 
+
+    dispatch({type:'ADD_PLAYLIST',playlist:list})
     setState({
       ...state,
+
       modal: false,
-      playlists: { ...state.playlists, [list]: new Set() },
   
     })
   }
 
-  const handleModal = () => setState({ ...state, modal: !state.modal })
+   const handleModal = () => setState({ ...addState, modal: !addState.modal })
 
   return (
     <div className='Playlist'>
@@ -139,7 +144,7 @@ NewDialogTitle.propTypes = {
               key={list}
               className={list === state.currentPlaylist ? 'active' : ''}
               onClick={() => {
-                setState({ ...state, currentPlaylist: list })
+                dispatch({type:'SET_PLAYLIST',playlist:list})
               }}
             >
               {list}
@@ -154,7 +159,7 @@ NewDialogTitle.propTypes = {
            </NewButton>
         </DialogActions>
 
-      <Modal show={state.modal} close={handleModal}>
+      <Modal show={addState.modal} close={handleModal}>
         <form onSubmit={addPlaylist}>
         <Divider variant='fullWidth'/>
         <Typography variant='h6' className='name' sx={{mt:'10px', mb:'10px'}}>New Playlist </Typography>
