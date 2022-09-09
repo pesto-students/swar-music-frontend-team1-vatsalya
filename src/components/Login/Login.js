@@ -1,11 +1,9 @@
-import React,{useEffect, useRef, useState} from 'react'
+import React,{ useRef, useState} from 'react'
 import { useSelector,useDispatch } from 'react-redux';
 import "../Admin/Songs/songs.css"
-import {Grid,Paper,Avatar, TextField,FormControlLabel,Checkbox,Button, Typography, Link,Box, Stack} from '@mui/material';
-import { registerAction,token,user } from './Utility/authenticatinReducer';
-import { useNavigate,useLocation } from "react-router-dom";
-import { usersConstants } from '../Admin/Users/Utils/usersReducer';
-import { showSuccessToast } from '../Common/Toast';
+import {Grid,Paper,Avatar,FormControlLabel,Checkbox,Button, Typography, Link,Box, Stack} from '@mui/material';
+import { registerAction } from './Utility/authenticatinReducer';
+import { useLocation } from "react-router-dom";
 import SignInImage from './SignInImage.png';
 
 
@@ -34,7 +32,6 @@ function Login({handleChange}) {
     
     const handleSubmit = (e) =>{
       e.preventDefault();
-      console.log("enter login form-----")
       if(userName  && password){
         const {from} = location.state || {from: {pathname: "/home"}};
         dispatch(registerAction.logInActions(userName,password,from)) 
@@ -76,9 +73,6 @@ function Login({handleChange}) {
         } }}
        variant= 'contained' fullWidth style={btstyle}> Sign In</Button>
        </form>
-        {/* <Typography  sx={{mb:"10px",mt:"10px",textAlign:"center"}}>
-          <Link href='#'> Forgot password?</Link>
-        </Typography> */}
          <Typography sx={{mb:"2px",mt:"10px", textAlign:"center"}}> Do you have an account?
           <Link href='#' onClick={()=>handleChange("event",1)}> Sign Up</Link>
         </Typography>

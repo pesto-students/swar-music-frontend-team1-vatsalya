@@ -58,7 +58,7 @@ function  getAllAudioBooksAction(){
 }
 
 export async function getAllAudioBooks(){
-    return await axios.get("/api/audiobooks",{
+    return await axios.get("https://swar-music.herokuapp.com/api/audiobooks",{
         headers: {
           'Authorization':  token()
         }}).then(

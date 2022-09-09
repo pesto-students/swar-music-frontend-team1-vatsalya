@@ -1,6 +1,5 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import {useNavigate} from "react-router-dom"
 import { showErrorToast, showSuccessToast } from '../../Common/Toast';
 import { history } from '../../store/History';
 const authentionConstants = {
@@ -63,10 +62,10 @@ export const loginUserReducer = (state = logInState, action) =>{
    }
 }
 
-function signUpActions(username,email,password,confirmPassword){
+function signUpActions(username,email,password,confirmPassword,country){
     return dispatch => {
         dispatch(request());
-        registerService.registerForm(username,email,password,confirmPassword)
+        registerService.registerForm(username,email,password,confirmPassword,country)
         .then(
             user => dispatch(success(user)),
             error => dispatch(failure(error.toString()))
@@ -105,22 +104,25 @@ function logInActions(username,password,home){
     }
 }
 
-export async function registerForm(username,email,password,confirmPassword){
-    const initialSignUpObject = {username: username, email: email, password: password, confirmPassword: confirmPassword};
-    return await axios.post("/api/auth/register",initialSignUpObject).then(
+export async function registerForm(username,email,password,confirmPassword,country){
+    const initialSignUpObject = {username: username, email: email, password: password, confirmPassword: confirmPassword,
+    country: country};
+    return await axios.post("https://swar-music.herokuapp.com/api/auth/register",initialSignUpObject).then(
           (res) => {
             console.log(res.data)
+            showSuccessToast("Thank you for signing up with us!")
             return res.data;
       
           }
         ).catch((err) => {
+          showErrorToast("Something is wrong!")
           console.log(err);
         })
 }
 
 export async function logInForm(username,password,from){
     const initialSignUpObject = {username: username, password: password};
-    return await axios.post("/api/auth/login",initialSignUpObject).then(
+    return await axios.post("https://swar-music.herokuapp.com/api/auth/login",initialSignUpObject).then(
           (res) => {
             localStorage.setItem('Token', res.data);
             const user = jwtDecode(res.data);

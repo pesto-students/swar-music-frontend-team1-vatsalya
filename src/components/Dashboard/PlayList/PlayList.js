@@ -1,13 +1,9 @@
 import React,{useMemo,useState,useEffect} from 'react';
-import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 import { DataGrid, gridClasses,GridToolbarQuickFilter,} from '@mui/x-data-grid';
 import PlaylistCard from './PlaylistCard/PlaylistCard';
 import './PlayList.css'
-import Addtoplaylist from '../SongsClient/Addtoplaylist';
 import { useSelector,useDispatch } from 'react-redux';
-import { userAction } from '../../Admin/Users/Utils/usersReducer';
-import Avatar from "@mui/material/Avatar";
 import { songsAction } from '../../Admin/Songs/Utils/songsReducer';
 import { songAction } from '../SongsClient/Utility/songsClientReducer';
 import Footer from '../HomeClient/Footer/Footer';
@@ -43,21 +39,7 @@ function QuickSearchToolbar(props) {
   )};
 
   const columns = [
-    {
-      field: 'Image',
-      headerName: 'Image',
-      width: 150,
-      editable: false,
-      headerAlign:'center',
-      renderCell: () => {
-        return (
-          <>
-          {/* <Avatar alt='shaan' src={Drake} sx={{ml:'50px'}}/> */}
-          </>
-        );
-      }
-    },
-
+   
     {
       field: '_id',
       headerName: '_id',
@@ -124,42 +106,21 @@ function QuickSearchToolbar(props) {
 
 function Playlist() {
      const dispatch = useDispatch();
-     const[url, setURL] = useState("url");
-     const[name,setName] = useState("Kesari10");
-     const[duration, setDuration] = useState("")
+     const[url, setURL] = useState("https://swar-app.s3.ap-south-1.amazonaws.com/Soch Liya");
+     const[name,setName] = useState("Soch Liya");
+     const[duration, setDuration] = useState("0:0")
      const [tableData, setTableData] = useState([]);
-
-    const[playListData, setPlayListData] = useState([]);
-    const datas = useSelector((state) => {
-      return state.getAllPlayListReducer.playList
-    })
+     const[playListData, setPlayListData] = useState([]);
     
-    const playLists = useSelector((state) =>{
-      // console.log("songs by playlist-----> " + state.getPlayListSongsReducer);
-      return state.getPlayListSongsReducer
-    })
-   
-    useEffect(() =>{
-      dispatch(playListAction.getAllPlayListByIdAction(jwtDecode(token()).id));
-    },[])
-
   
-    useEffect(() =>{
-      setPlayListData(datas)
-     },[])
      
     const songsData = useSelector((state) => {
-        console.log("songs selector")
-      console.log(state.songsReducer);
       return state.songsReducer
       })
       const songsByName = useSelector((state) => {
-        console.log("find By song selector")
-      console.log(state.findSongByNameReducer);
       return state.findSongByNameReducer
       })
 
-      console.log("--------tableData")
       console.log(tableData);
       
       useMemo( () => {
@@ -179,7 +140,7 @@ function Playlist() {
       },[name])
 
       const fetch =  (playListId) =>{
-        axios.get(`http://localhost:8900/api/songs/find/playlist/songs/${playListId}`,{
+        axios.get(`https://swar-music.herokuapp.com/api/songs/find/playlist/songs/${playListId}`,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -194,16 +155,33 @@ function Playlist() {
          
         })
       }
+
+      const fetchPlayList = () =>{
+        axios.get(`https://swar-music.herokuapp.com/api/songs/get/playlist/${jwtDecode(token()).id}`,{
+        headers: {
+          'Authorization':  token()
+        }}).then(
+          (res) => {
+            console.log("welcome back user Id")
+            setPlayListData(res.data)
+            console.log(res.data);
+            return res.data;
+          }
+        ).catch((err) => {
+          return err;
+         
+        })
+      }
+
+      useEffect(() =>{
+        fetchPlayList()
+      },[])
         
     const handleRowClick = (params) => {
       setName(params.row.name)
       setDuration(params.row.duration)
     };
-    sessionStorage.setItem("name", name);
-       
-    console.log("This is the playList data" + playListData);
-
-    console.log("Get all the table data:" + tableData);
+   
     
 
   return (

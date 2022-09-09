@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { showErrorToast, showSuccessToast } from '../../../Common/Toast';
+import { showSuccessToast } from '../../../Common/Toast';
 import { token } from '../../../Login/Utility/authenticatinReducer';
 
 export const playListService = {
@@ -143,7 +143,6 @@ function deletePlayListAction(playListId){
         return {type: playListConstants.DELETE_PLAYLIST_BY_ID_REQUEST}
     }
     function success(playList){
-        console.log("--------------------success playlist" + playList)
         return {type: playListConstants.DELETE_PLAYLIST_BY_ID_SUCCESS, playList}
     }
     function failure(error){
@@ -161,11 +160,9 @@ function getPlayListAction(playListId){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: playListConstants.GET_SONGS_BY_PLAYLIST_REQUEST}
     }
     function success(playList){
-        console.log("--------------------success playlist" + playList)
         return {type: playListConstants.GET_SONGS_BY_PLAYLIST_SUCCESS, playList}
     }
     function failure(error){
@@ -183,11 +180,9 @@ function createPlayListAction(userId,playListName){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: playListConstants.CREATE_PLAYLIST_REQUEST}
     }
     function success(playList){
-        console.log("--------------------" + playList)
         return {type: playListConstants.CREATE_PLAYLIST_SUCCESS, playList}
     }
     function failure(error){
@@ -205,11 +200,9 @@ function addSongsToPlayListAction(playListId,songsId){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: playListConstants.CREATE_PLAYLIST_BY_SONGS_REQUEST}
     }
     function success(playList){
-        console.log("--------------------playListBySongs" + playList)
         return {type: playListConstants.CREATE_PLAYLIST_BY_SONGS_SUCCESS, playList}
     }
     function failure(error){
@@ -231,7 +224,6 @@ function getAllPlayListByIdAction(userId){
         return {type: playListConstants.GET_PLAYLIST_BY_ID_REQUEST}
     }
     function success(playList){
-        console.log("--------------------" + playList)
         return {type: playListConstants.GET_PLAYLIST_BY_ID_SUCCESS, playList}
     }
     function failure(error){
@@ -241,16 +233,14 @@ function getAllPlayListByIdAction(userId){
 
 export async function createPlayListForm(user_id,name){
     const initialPlayListObject = {user_id: user_id, name: name};
-    console.log("initialPlayList----------")
     console.log(initialPlayListObject)
-    return await axios.post("/api/songs/post/playlist",initialPlayListObject,{
+    return await axios.post("https://swar-music.herokuapp.com/api/songs/post/playlist",initialPlayListObject,{
         headers: {
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log("response-----")
-            console.log(res.data);
-            showSuccessToast("Your playList Has Been Created")
+            showSuccessToast("New PlayList Has Been Created!")
+            setTimeout(() => { window.location.reload(true)},3000)
             return res.data;
           }
         ).catch((err) => {
@@ -260,7 +250,7 @@ export async function createPlayListForm(user_id,name){
 }
 
 export async function getAllPlayListByUserId(userId){
-    return await axios.get(`/api/songs/get/playlist/${userId}`,{
+    return await axios.get(`https://swar-music.herokuapp.com/api/songs/get/playlist/${userId}`,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -277,9 +267,8 @@ export async function getAllPlayListByUserId(userId){
 
 export async function addSongToPlayList(playListId,songsId){
     const initialPlayListObject = {_id: songsId};
-    console.log("playListSongs---------")
     console.log(initialPlayListObject)
-    return await axios.post(`/api/songs/add/playlist/songs/${playListId}` ,initialPlayListObject,{
+    return await axios.post(`https://swar-music.herokuapp.com/api/songs/add/playlist/songs/${playListId}` ,initialPlayListObject,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -296,7 +285,7 @@ export async function addSongToPlayList(playListId,songsId){
 }
 
 export async function findSongsByPlayListId(playListId){
-    return await axios.get(`/api/songs/find/playlist/songs/${playListId}`,{
+    return await axios.get(`https://swar-music.herokuapp.com/api/songs/find/playlist/songs/${playListId}`,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -312,14 +301,15 @@ export async function findSongsByPlayListId(playListId){
 }
 
 export async function deletePlayListById(playListId){
-    return await axios.delete(`/api/songs/playList/${playListId}`,{
+    return await axios.delete(`https://swar-music.herokuapp.com/api/songs/playList/${playListId}`,{
         headers: {
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log("welcome back Songs By PlayList")
-            console.log(res.data);
             showSuccessToast("PlayList Has Been Deleted!")
+            console.log(res.data);
+            setTimeout(() => { window.location.reload(true)},1000)
+            
             return res.data;
           }
         ).catch((err) => {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { token } from '../../../Login/Utility/authenticatinReducer';
 
 const poadCastConstants = {
     GET_ALL_POADCAST_REQUEST: 'GET_ALL_POADCAST_REQUEST',
@@ -57,9 +58,9 @@ function getAllPoadCastAction(){
 }
 
 export async function getAllPoadCast(){
-    return await axios.get("/api/poadcast",{
+    return await axios.get("https://swar-music.herokuapp.com/api/poadcast",{
         headers: {
-          'Authorization':  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjdkODRlZWQwY2IwYzAzMWEwZDkzNCIsImlzQWRtaW4iOnRydWUsInVzZXJuYW1lIjoiU3lzQWRtaW43IiwiaWF0IjoxNjYwNTA0Mzc0fQ.mZrTPwWj3MlhrH5MfSunDQVGbpv1d34gr7IrkUFtfTc`
+          'Authorization':  token()
         }}).then(
           (res) => {
             // setUsers(res.data);

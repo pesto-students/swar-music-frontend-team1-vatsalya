@@ -1,5 +1,4 @@
-import React ,{useState,useRef,useContext,useMemo, useEffect}from 'react';
-import { StoreContext } from '../Dashboard';
+import React ,{useState, useEffect}from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import DialogActions from '@mui/material/DialogActions';
@@ -7,23 +6,17 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Dialog ,Button, DialogTitle, DialogContent, Stack,  
   Typography, IconButton, Fab, Divider} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Modal from './Modal'
 import QueueMusicOutlinedIcon from '@mui/icons-material/QueueMusicOutlined';
 import './Addtoplaylist.css';
 import { Add } from '@mui/icons-material';
 import { useSelector,useDispatch } from 'react-redux';
-import { createPlayListForm, playListAction, playListService } from '../PlayList/Utils/postPlayListReducer';
+import {playListAction} from '../PlayList/Utils/postPlayListReducer';
 import jwtDecode from 'jwt-decode';
 import { token } from '../../Login/Utility/authenticatinReducer';
-import axios from 'axios';
+import { showSuccessToast } from '../../Common/Toast';
 
 const NewButton = styled(Button)(()=>({
-  m:'0 auto',
-  textAlign:'center',
-  alignItems:'center',
-  justifyContent:'center',
-  mr:'5px',
   color: 'white', backgroundColor: 'black', borderColor: 'black', borderRadius: '20px',
    padding:'0.5em 1.7em',
    '&:hover': {
@@ -110,7 +103,6 @@ NewDialogTitle.propTypes = {
     return state.createPlayListSongsReducer;
   })
 
-  // console.log("data-------------------", addPlayListSongs);
 
   const datas = useSelector((state) => {
     return state.getAllPlayListReducer.playList
@@ -120,10 +112,6 @@ NewDialogTitle.propTypes = {
     dispatch(playListAction.getAllPlayListByIdAction(jwtDecode(token()).id));
   },[])
 
-
-  console.log("data------------cdacdcdc", datas);
- 
-
  useEffect(() =>{
   console.log("This is the right data" + data);
   setData(datas)
@@ -131,11 +119,12 @@ NewDialogTitle.propTypes = {
 
   const addPlaylist = e => {
     e.preventDefault()
-    dispatch(playListAction.createPlayListAction(jwtDecode(token()).id, name));
     if(name !== '' && jwtDecode(token()).id !== '' && rowId !== ''){
         dispatch(playListAction.createPlayListAction(jwtDecode(token()).id, name));
+        showSuccessToast("Your playList Has Been Created")
       }
   }
+  
 
   const [addState, setState] = useState({
     currentPlaylist: ' my liked songs ',
@@ -161,15 +150,7 @@ NewDialogTitle.propTypes = {
           Add to Playlist
         </NewDialogTitle>
         <DialogContent dividers>
-        <Stack direction='row' spacing={5} sx={{p:'10px'}}>
-        <Fab disabled aria-label="like" >
-        <FavoriteIcon  sx={{color:'red'}}/>
-      </Fab>
-        <Typography>Liked Songs</Typography>
-       <IconButton> <AddIcon/></IconButton> 
-       </Stack>
-       {/* {datas} */}
-        {data.map((item) => (
+        {data?.map((item) => (
       
           <Stack direction='row' spacing={5} sx={{p:'10px'}}>
           <Fab disabled aria-label="Playlist" >
@@ -187,16 +168,16 @@ NewDialogTitle.propTypes = {
           ))}
         </DialogContent>
         <DialogActions sx={{mr:'30px'}}>
-          <NewButton autoFocus onClick={()=>{handleModal();}}  variant='contained' startIcon={<AddIcon/>} className='CreatePlaylist'>
+          <NewButton autoFocus onClick={()=>{handleModal();}}  variant='contained' startIcon={<AddIcon/>}>
           Create New Playlist
            </NewButton>
         </DialogActions>
 
       <Modal show={addState.modal} close={handleModal}>
         <form onSubmit={addPlaylist}>
-        {/* <Divider variant='fullWidth'/> */}
-        {/* <Typography variant='h7' className='name'>New Playlist </Typography> */}
-        {/* <Divider variant='fullWidth'/> */}
+        <Divider variant='fullWidth'/>
+        <Typography variant='h6' className='name' sx={{mt:'10px', mb:'10px'}}>New Playlist </Typography>
+        <Divider variant='fullWidth'/>
           <div className="content-wrap">
             <input
               type="text"

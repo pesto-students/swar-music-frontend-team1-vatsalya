@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { token } from '../../../Login/Utility/authenticatinReducer';
 
 export const usersConstants = {
     GET_ALL_USER_REQUEST: 'GET_ALL_USER_REQUEST',
@@ -57,9 +58,9 @@ function getAllUserAction(){
 }
 
 export async function getAllUsers(){
-    return await axios.get("/api/users",{
+    return await axios.get("https://swar-music.herokuapp.com/api/users",{
         headers: {
-          'Authorization': `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjdkODRlZWQwY2IwYzAzMWEwZDkzNCIsImlzQWRtaW4iOnRydWUsInVzZXJuYW1lIjoiU3lzQWRtaW43IiwiaWF0IjoxNjYwNTA0Mzc0fQ.mZrTPwWj3MlhrH5MfSunDQVGbpv1d34gr7IrkUFtfTc`
+          'Authorization': token()
         }}).then(
           (res) => {
             // setUsers(res.data);

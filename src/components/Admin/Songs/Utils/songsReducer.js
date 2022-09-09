@@ -58,7 +58,7 @@ function getAllSongsAction(){
 }
 
 export async function getAllSongs(){
-    return await axios.get("/api/songs",{
+    return await axios.get("https://swar-music.herokuapp.com/api/songs",{
         headers: {
           'Authorization':  token()
         }}).then(

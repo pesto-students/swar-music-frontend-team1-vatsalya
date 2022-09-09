@@ -102,7 +102,7 @@ function getAllPoadCastByNameAction(name){
 }
 
 export async function getAllPoadCasts(){
-    return await axios.get("/api/poadcast",{
+    return await axios.get("https://swar-music.herokuapp.com/api/poadcast",{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -119,7 +119,7 @@ export async function getAllPoadCasts(){
 }
 
 export async function findPoadCastByName(name){
-    return await axios.get(`/api/poadcast/name/${name}`).then(
+    return await axios.get(`https://swar-music.herokuapp.com/api/poadcast/name/${name}`).then(
           (res) => {
             console.log("songs name by response----")
             console.log(res.data)

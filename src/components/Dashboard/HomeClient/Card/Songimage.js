@@ -77,9 +77,7 @@ function Songimage() {
       </div> 
 
   <div className="title-total">  
-      {/* <Typography variant="title" sx={{ml:'1.2em'}}>{artist}</Typography> */}
       <h1 sx={{mt:'1em',mb:'0.1em',}}>{artist}</h1>
-      {/* <h1>On top of the world</h1> */}
        <div className="actions">
       <Button variant='contained' sx={{mt:'1em',mb:'0.1em', color: 'white', backgroundColor: 'black', borderColor: 'black', borderRadius: '20px', padding:'0.5em 1.7em'}} fontSize='large'
       onClick={onPlay}> Play</Button>

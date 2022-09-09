@@ -7,12 +7,8 @@ import { songsAction } from '../../Admin/Songs/Utils/songsReducer';
 import { songAction } from './Utility/songsClientReducer';
 import '../HomeClient/SongsTable/Datagridtable.css'
 import Footer from '../HomeClient/Footer/Footer';
-import Avatar from "@mui/material/Avatar";
-import Drake from '../HomeClient/Right/Drake.jpg';
-import {createTheme } from '@mui/material/styles';
-import { grey } from '@mui/material/colors';
 import Addtoplaylist from './Addtoplaylist';
-import { playListAction } from '../../../components/Dashboard/PlayList/Utils/postPlayListReducer'
+
 
 function QuickSearchToolbar(props) {
   return (
@@ -24,10 +20,10 @@ function QuickSearchToolbar(props) {
       }}
     >
       <GridToolbarQuickFilter 
-      sx={{ml:{xs:'50px',sm:'100px',md:'265px'},
-      width: {xs:'200px',sm:'300px',md:'650px'},
+      sx={{ml:'230px',
       mt:'7px',
       background: "#fff",
+    width: '500px',
     height: '40px',
     border: '10px',
     borderRadius: '80px',
@@ -40,20 +36,6 @@ function QuickSearchToolbar(props) {
   )};
 
   const columns = [
-    {
-      field: 'Image',
-      headerName: 'Image',
-      width: 150,
-      editable: false,
-      headerAlign:'center',
-      renderCell: () => {
-        return (
-          <>
-          <Avatar alt='shaan' src={Drake} sx={{ml:'50px'}}/>
-          </>
-        );
-      }
-    },
 
     {
       field: '_id',
@@ -133,14 +115,16 @@ function QuickSearchToolbar(props) {
   
 
 function SongsClient() {
-    const[url, setURL] = useState("url");
-    const[name,setName] = useState("Kesari10");
+    const[url, setURL] = useState("https://swar-app.s3.ap-south-1.amazonaws.com/Soch+Liya");
+    const[name,setName] = useState("Soch Liya");
     const[duration, setDuration] = useState("");
     const songsData = useSelector((state) => {
       return state.songsReducer
       })
       const [tableData, setTableData] = useState(songsData.songs);
+
       const songsByName = useSelector((state) => {
+        console.log("findByName=======>")
       console.log(state.findSongByNameReducer);
       return state.findSongByNameReducer
       })
@@ -148,7 +132,6 @@ function SongsClient() {
       const dispatch = useDispatch();
       useMemo( () => {
         dispatch(songsAction.getAllSongsAction())
-        dispatch(playListAction.createPlayListAction())
         setTableData(songsData.songs.songs)
       },[])
       
@@ -162,7 +145,7 @@ function SongsClient() {
               setName(params.row.name)
               setDuration(params.row.duration)
           };
-          sessionStorage.setItem("name", name);
+  
 
 return(
 
@@ -179,7 +162,7 @@ return(
         pageSize={15}
         rowsPerPageOptions={[15]}
         onRowClick={handleRowClick}
-        sx={{width:{xs:300,sm:440,md:1200},
+        sx={{width:1200,
         fontSize:'20px',
         mt:'20px',
           ml:'40px',

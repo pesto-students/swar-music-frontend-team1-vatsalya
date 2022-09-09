@@ -35,7 +35,7 @@ const handleSubmit=(event)=>{
   console.log(id);
 
   
-  axios.post(`/api/users/feedBack/${id}`,{headers: {
+  axios.post(`https://swar-music.herokuapp.com/api/users/feedBack/${id}`,{headers: {
     'Authorization':  localStorage.getItem('Token')
   }},feedBackObject).then(
     (res) =>{

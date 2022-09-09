@@ -11,6 +11,17 @@ const tstyle={margin:'5px 0'}
 
 function Signup() {
 
+  const countries = [
+    {value: '', text: '--Choose an option--'},
+    {value: 'India', text: 'India'},
+    {value: 'USA', text: 'USA'},
+    {value: 'UK', text: 'UK'},
+    {value: 'Germany', text: 'Germany'},
+    {value: 'Canada', text: 'Canada'},
+    {value: 'Australia', text: 'Australia'}
+    
+  ];
+
 const [userName, setUserName] = useState("");
 
 const [password, setPassword] = useState("");
@@ -18,6 +29,8 @@ const [password, setPassword] = useState("");
 const [confirmPassword, setConfirmPassword] = useState("");
 
 const[email,setEmail] = useState("");
+
+const[country,setCountry] = useState(countries[0].value);
 
 const onChangeUserName= (e) => {
   setUserName(e.target.value )
@@ -33,6 +46,10 @@ const onChangeConfirmPassword =(e) => {
   setConfirmPassword(e.target.value )
 }
 
+const onChangeCountry =(e) => {
+  setCountry(e.target.value )
+}
+
 const register = useSelector((state) =>{
   console.log(state.submitUserReducer)
   return state.submitUserReducer
@@ -42,8 +59,8 @@ const dispatch = useDispatch();
 const handleSubmit = (e) =>{
   e.preventDefault();
   console.log("enter submit form-----")
-  if(userName && email && password && confirmPassword){
-    dispatch(registerAction.signUpActions(userName,email,password,confirmPassword))
+  if(userName && email && password && confirmPassword && country){
+    dispatch(registerAction.signUpActions(userName,email,password,confirmPassword,country))
   }
 }
   return (
@@ -59,15 +76,13 @@ const handleSubmit = (e) =>{
             <form onSubmit={handleSubmit} >
             <input type="text" placeholder='Enter User Name'  onChange={onChangeUserName} required/>
             <input type='email' placeholder='Enter Email Address' onChange={onChangeEmail}  required/>
-            {/* <input type="text" placeholder='Enter Mobile Number'  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required/> */}
-            <select placeholder='Choose Your Country' className='select-menu'  required>
-              <option>India</option> 
-              <option>USA</option> 
-              <option>United Kingdom</option> 
-              <option>Germany</option> 
-              <option>France</option> 
-              <option>Nepal</option> 
-              </select>
+            <select value={country} onChange={onChangeCountry}>
+              {countries.map(country => (
+              <option key={country.value} value={country.value}>
+                {country.text}
+            </option>
+        ))}
+      </select>
             <input type='password' placeholder='Enter Password' onChange={onChangePassword} minlength="8" required/>
             <input type="password" placeholder='Confirm Password' onChange={onChangeConfirmPassword} minlength="8" required/>
             <FormControlLabel control ={<Checkbox/>} label=' I accept the terms and conditions'/>

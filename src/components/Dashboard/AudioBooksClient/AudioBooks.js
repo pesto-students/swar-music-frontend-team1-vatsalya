@@ -115,12 +115,9 @@ function AudioBooks() {
       return state.songsReducer
       })
       const songsByName = useSelector((state) => {
-        console.log("find By song selector")
       console.log(state.findSongByNameReducer);
       return state.findSongByNameReducer
       })
-
-      console.log("--------songsByName")
       console.log(songsByName.song);
       
       const dispatch = useDispatch();
@@ -138,15 +135,6 @@ function AudioBooks() {
               setName(params.row.name)
               setDuration(params.row.duration)
           };
-          sessionStorage.setItem("name", name);
-          console.log("name----")
-          console.log(name)
-
-          console.log("index------")
-          console.log(duration)
-
-          console.log("url------")
-          console.log(url);
   return (
     <div className="songsClient">
          <Box sx={{ height: 800, width: '95%' , mt:'30px'}}>

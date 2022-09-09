@@ -11,7 +11,7 @@ import {Typography,IconButton} from '@mui/material';
 import './Footer.css';
 
 const Footer =({url, duration,name,play})=> {
-  console.log(url)
+  console.log("---------------->url",url)
   const audioRef = useRef();
   const [isPlaying,setIsPlaying] = useState(play);
   const [currentTime, setCurrentTime] = useState();
@@ -69,7 +69,7 @@ const Footer =({url, duration,name,play})=> {
       </div>
     </div>
     <div className='songlength'>
-    <Box sx={{ width: {xs:200,sm:250,md:300,xl:650} }}>
+    <Box sx={{ width: 650 }}>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
         <Typography component={'span'} variant='content'>{Math.floor(currentTime/60)}:{Math.floor(currentTime%60)}</Typography>
         <Slider aria-label="Media_range" size="small" sx={{color:'black'}}

@@ -248,7 +248,7 @@ function countAllUserAction(){
 }
 
 export async function countAllSongs(){
-    return await axios.get("/api/songs/count/all",{
+    return await axios.get("https://swar-music.herokuapp.com/api/songs/count/all",{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -263,7 +263,7 @@ export async function countAllSongs(){
 }
 
 export async function countAllUser(){
-    return await axios.get("/api/users/count/all",{
+    return await axios.get("https://swar-music.herokuapp.com/api/users/count/all",{
         headers: {
           'Authorization': token()
         }}).then(
@@ -278,7 +278,7 @@ export async function countAllUser(){
 }
 
 export async function countAllPoadCast(){
-    return await axios.get("/api/poadCast/count/all",{
+    return await axios.get("https://swar-music.herokuapp.com/api/poadCast/count/all",{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -293,7 +293,7 @@ export async function countAllPoadCast(){
 }
 
 export async function countAllAudioBooks(){
-    return await axios.get("/api/audioBooks/count/all",{
+    return await axios.get("https://swar-music.herokuapp.com/api/audioBooks/count/all",{
         headers: {
           'Authorization': token()
         }}).then(
@@ -308,7 +308,7 @@ export async function countAllAudioBooks(){
 }
 
 export async function countAllByCountry(){
-    return await axios.get("/api/users/country/count/all",{
+    return await axios.get("https://swar-music.herokuapp.com/api/users/country/count/all",{
         headers: {
           'Authorization': token()
         }}).then(
