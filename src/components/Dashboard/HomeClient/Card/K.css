@@ -1,0 +1,16 @@
+.mycard{
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+    max-width: 400px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 25px;
+    position: relative;
+    background-image: url("https://m.media-amazon.com/images/S/aplus-media/vc/cab6b08a-dd8f-4534-b845-e33489e91240._CR75,0,300,300_PT0_SX300__.jpg");;
+    background-position: bottom center;
+    background-size: cover;
+}
+
+
+

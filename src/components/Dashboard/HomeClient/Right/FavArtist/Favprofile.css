@@ -1,0 +1,37 @@
+.audio-players{
+    display: none;
+}
+.artist_list{
+    padding: 1px;
+    text-align: center;
+}
+.artist_listitem{
+    padding: 1.5px;
+    width: 300px;
+    height: 80px;
+    color:black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+    margin: '0 auto';
+
+}
+.prfile:hover{
+    background-color: black;
+}
+.artist_list .data{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left; 
+    padding: 0px  40px 0px 0px;
+}
+.artist_list .profile{
+width: 65px;
+height: 65px;
+border-radius: 100%;
+margin-right: 15px;
+}
+

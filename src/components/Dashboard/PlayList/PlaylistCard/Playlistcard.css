@@ -1,0 +1,44 @@
+.PlaylistContainer{
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+	border-radius: 1.5em;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	padding-top: 15px;
+	position: relative;
+    margin-left: 20px;
+    background-color: rgb(209, 233, 252);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+.PlaylistCard{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+	border-radius: 1.5em;
+	padding-top: 2px;
+	position: relative;
+	text-align: center;
+}
+
+.Artist_Image{
+    border-radius: 1.5em;
+    padding: 1em;
+}
+.PlaylistTitle{
+    margin: 0 auto;
+    margin-bottom: 0;
+    text-align: center;
+}
+.allsongs{
+    height: 20px;
+}
+
+ 

@@ -1,0 +1,22 @@
+.datatable{
+    margin: auto;
+    margin-bottom: 2em;
+   }
+   
+   .audioPlayer_Home{
+       position: sticky;
+       bottom:10px;
+       display: flex;
+       align-items: center;
+       margin-top: 2em;
+   }
+   
+   @media screen and (max-width: 700px) {
+       .audioPlayer_Home{
+           position:fixed;
+       }
+        .datagrid{
+           width: 300;
+           background-color:  red;
+       }
+   }

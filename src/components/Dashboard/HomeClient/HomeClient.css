@@ -1,0 +1,77 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+} */
+
+.home{
+    background-color: rgba(244,245,254,255);
+    height: 100%;
+    width : 100%;
+    margin-top: -1px;
+    border-top: 1px solid transparent;
+    display: flex;
+}
+.left{
+    flex:0.75;
+    margin-top: 1em;
+}
+.right{
+    flex: 0.25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search__container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.search_form{
+    display: flex;
+    background: #fff;
+    width: 700px;
+    height: 55px;
+    border: 10px;
+    border-radius: 30px;
+    border-color: black;
+    margin-bottom: 20px;
+}
+
+.search_form .icon{
+  align-self: center;
+  margin-left: 10px;
+  padding: 10px; 
+  color: #777;
+}
+.search_form .search__input{
+    flex:1;
+    border: none;
+    outline: none;
+    font-size: medium;
+}
+
+.search_form button{
+    background: tomato;
+    padding: 10px 50px;
+    outline: none;
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-bottom-right-radius: 100rem;
+    border-top-right-radius: 100rem;
+    border-color: tomato;
+}
+
+.left .songimage{
+    margin: 0 60px;
+}
+
+@media (max-width: 480px) and (min-width: 320px){
+   .home{
+       flex-direction: column;
+   }
+ }

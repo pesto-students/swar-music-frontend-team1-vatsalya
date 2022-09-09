@@ -1,0 +1,13 @@
+.myplaylist{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.audioPlayer{
+    padding-top:180px;
+}
+
+.allSongsTab{
+    width:250px;
+    height:200px;
+}
