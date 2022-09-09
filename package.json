@@ -41,7 +41,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://swar-music.herokuapp.com/",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -55,7 +55,7 @@ function getAllSongByNameAction(name){
 }
 
 export async function findSongsByName(name){
-    return await axios.get(`/api/songs/name/${name}`).then(
+    return await axios.get(`https://swar-music.herokuapp.com/api/songs/name/${name}`).then(
           (res) => {
             console.log("songs name by response----")
             console.log(res.data)

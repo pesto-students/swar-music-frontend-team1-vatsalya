@@ -9,17 +9,10 @@ import '../HomeClient/SongsTable/Datagridtable.css'
 import Footer from '../HomeClient/Footer/Footer';
 import Avatar from "@mui/material/Avatar";
 import Drake from '../HomeClient/Right/Drake.jpg';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import Addtoplaylist from './Addtoplaylist';
 import { playListAction } from '../../../components/Dashboard/PlayList/Utils/postPlayListReducer'
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: grey[900],
-    }
-  }
-});
 
 function QuickSearchToolbar(props) {
   return (
