@@ -121,11 +121,7 @@ function SongsClient() {
     const songsData = useSelector((state) => {
       return state.songsReducer
       })
-      const [tableData, setTableData] = useState(songsData.songs);
-
-      if(songsData.songs === undefined){
-        setTableData([])
-      }
+  
       const songsByName = useSelector((state) => {
         console.log("findByName=======>")
       console.log(state.findSongByNameReducer);
@@ -135,7 +131,6 @@ function SongsClient() {
       const dispatch = useDispatch();
       useMemo( () => {
         dispatch(songsAction.getAllSongsAction())
-        setTableData(songsData.songs.songs)
       },[])
       
       useEffect( () =>{
@@ -159,7 +154,7 @@ return(
        borderRadius="25%" 
        rowHeight={50}
        components={{ Toolbar: QuickSearchToolbar }}
-        rows={tableData}
+        rows={songsData.songs}
         columns={columns}
         getRowId ={(row) => row._id}
         pageSize={15}
