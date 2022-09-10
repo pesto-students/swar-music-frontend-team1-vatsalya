@@ -1,21 +1,35 @@
-# Pesto Assignments
+# SWAR MUSIC
 
-Welcome to Pesto assignments.
+Swar music is a music player, on which users can listen to music,poadcast
+and audioBooks.On other hand users can create,edit and delete their playlist.
 
+There are two types of users:
+1.Admin user - Admin will able upload songs,poadcast and audiobooks to s3 bucket
+2.Client user - Client will able to listen to music,poadcast and audiobooks.Whereas they
+can also create,edit and delete playlist.
 
-## How to solve assignments
+Technology stack:
+FrontEnd: React js,Material UI and Chartjs
+BackEnd: Nodejs and Express js .
+DataBase: MongoDB
+CloudStorage: AWS s3 bucket
 
-Weekly Assignments will be shared by your mentor or instructor.
+Link - https://swar-music.netlify.app/
 
-Make sure master or main branch is protected and you are not able to push any code directly to master.
+PRD - https://docs.google.com/document/d/1TyxP5sbFscZVXm45qLKtebwfGlDtgJLx9jQjRp07PhI/edit?usp=sharing
 
-- Clone this repo to your local.
-- Checkout to new branch for submission. Suggestion you can name new branch week wise - branch for week 1 assignment can be week1
-```bash
-git checkout -b week1
-```
-- Create Assignment week folder in root directory(if it doesn't exist) for eg. for solving week 1 assignment create folder with name "week1".
-- You can create subfolders in main week(week1) folder if required.
-- Add proper readme [(How to Write proper readme](https://meakaakka.medium.com/a-beginners-guide-to-writing-a-kickass-readme-7ac01da88ab3) )in week's folder or subfolder explaining about assignment, how to run assignment and any other instructions. 
-- Raise a PR against master and add your mentor as reviewer
-- Resolve PR comments if any and once your mentor approves your PR, Merge it.
+HLD - https://drive.google.com/file/d/1xueBx8ZRPTbhap5F3PkhirFvftsOgb74/view?usp=sharing
+
+SCREEN SHORTS:
+
+Check out the link -> https://docs.google.com/document/d/1--PI3ilEGBawKokIYXlAfZ7vwigESn_1ul2nVARH-6o/edit?usp=sharing
+
+DEPENDENCIES:
+In order to run this project, node should be installed in the pc.
+
+CONFIGURATION:
+
+1. Take a clone of the the project - https://github.com/pesto-students/swar-music-frontend-team1-vatsalya.git.
+2. Open the project in your editor and open the terminal.
+3. Install node modules by running command npm install.
+4. Once node module folder is created, start your project by npm start.
