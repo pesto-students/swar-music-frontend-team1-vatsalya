@@ -3,12 +3,8 @@ import Box from '@mui/material/Box';
 import { DataGrid,gridClasses,GridToolbarQuickFilter } from '@mui/x-data-grid';
 import { useSelector,useDispatch } from 'react-redux';
 import "../SongsClient/SongsClient.css";
-import { songsAction} from '../../Admin/Songs/Utils/songsReducer';
-import { songAction } from '../SongsClient/Utility/songsClientReducer';
 import '../HomeClient/SongsTable/Datagridtable.css'
 import Footer from '../HomeClient/Footer/Footer';
-import Avatar from "@mui/material/Avatar";
-import Drake from '../HomeClient/Right/Drake.jpg';
 import { audioBooksAction } from './Utility/audioBookRedcuer';
 
 
@@ -91,8 +87,8 @@ const columns = [
   ];
 
 function AudioBooks() {
-    const[url, setURL] = useState("url");
-    const[name,setName] = useState("Kesari01");
+    const[url, setURL] = useState("https://swar-app.s3.ap-south-1.amazonaws.com/Soch Liya");
+    const[name,setName] = useState("Soch Liya");
     const[duration, setDuration] = useState("")
     const audioBooksData = useSelector((state) => {
         console.log("songs selector")

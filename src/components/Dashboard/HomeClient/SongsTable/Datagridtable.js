@@ -122,7 +122,7 @@ const columns = [
 export default function App() {
   const[url, setURL] = useState(localStorage.getItem("url"));
   const[name,setName] = useState("Kesari");
-  const[duration, setDuration] = useState("")
+  const[duration, setDuration] = useState("4:29")
   const songsData = useSelector((state) => {
       console.log("songs selector")
     console.log(state.songsReducer);

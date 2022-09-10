@@ -71,7 +71,7 @@ const Footer =({url, duration,name,play})=> {
     <div className='songlength'>
     <Box sx={{ width: 650 }}>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-        <Typography component={'span'} variant='content'>{Math.floor(currentTime/60)}:{Math.floor(currentTime%60)}</Typography>
+        <Typography component={'span'} variant='content'>{currentTime ? Math.floor(currentTime/60) : '0'}:{currentTime ? Math.floor(currentTime%60) : '0'}</Typography>
         <Slider aria-label="Media_range" size="small" sx={{color:'black'}}
                 min={0}
                 max={parseFloat(duration) * 60} 
@@ -80,7 +80,7 @@ const Footer =({url, duration,name,play})=> {
                     audioRef.current.currentTime = e.target.value;
                     setCurrentTime(e.target.value)
                 }}/>
-        <Typography component={'span'} variant='content'> {duration}</Typography>
+        <Typography component={'span'} variant='content'> {duration ? duration : '4:43'}</Typography>
        </Stack>
        </Box>
     </div>
