@@ -203,7 +203,7 @@ function Playlist() {
     
     </div>
 
-    <Box sx={{ height: 800, width: '95%' ,mt:'30px'}}>
+    <Box sx={{ height: 800, width: '95%' ,mt:'60px'}}>
       <DataGrid
       disableColumnMenu
        borderRadius="25%" 
