@@ -12,6 +12,7 @@ const handleClickOpen =()=>{
 }
 
 const handleClose=()=>{
+  localStorage.clear();
   setOpen(false);
 }
   return (

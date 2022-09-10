@@ -35,3 +35,13 @@
     border-radius: 100%;
     margin-right: 15px;
 }
+
+
+@media (max-width: 480px) and (min-width: 320px){
+    .rightbar{
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+  }

@@ -9,6 +9,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import { songsAction } from './Utils/songsReducer';
 import axios from 'axios';
 import { showSuccessToast, showErrorToast } from '../../Common/Toast';
+import ConfirmModel from '../../PageNotFound/ConfirmModel';
 
 
 const Datagridstyle={width:1200,
@@ -80,7 +81,12 @@ const columns = [
       renderCell: (params) =>{
           return(
               <>
-              <DeleteOutline className="userListDelete"/>
+                <>
+                <ConfirmModel rowId = {params.row._id} title={"Delete Songs"} 
+                content={"Are you sure you want to delete this songs?"}
+                action={songsAction.deleteSongsAction(params.row._id)}/> 
+             
+              </>
               </>
           )
       }

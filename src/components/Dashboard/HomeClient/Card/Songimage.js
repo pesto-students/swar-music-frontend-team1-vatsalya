@@ -79,9 +79,9 @@ function Songimage() {
   <div className="title-total">  
       <h1 sx={{mt:'1em',mb:'0.1em',}}>{artist}</h1>
        <div className="actions">
-      <Button variant='contained' sx={{mt:'1em',mb:'0.1em', color: 'white', backgroundColor: 'black', borderColor: 'black', borderRadius: '20px', padding:'0.5em 1.7em'}} fontSize='large'
+      <Button variant='contained' sx={{mt:{xs:'0',sm:'0',md:'0',xl:'1em'},mb:'0.1em', color: 'white', backgroundColor: 'black', borderColor: 'black', borderRadius: '20px', padding:'0.5em 1.7em'}} fontSize='large'
       onClick={onPlay}> Play</Button>
-      <Button variant ='outlined' sx={{mt:'0.5em',mb:'0.1em', color: 'black', borderColor: 'black', ml:'16px', borderRadius: '20px' , padding:'0.5em 1.7em'}}
+      <Button variant ='outlined' sx={{mt:{xs:'0.5em',sm:'0.5em',md:'0.2em',xl:'1em'},mb:'0.1em', color: 'black', borderColor: 'black', ml:'16px', borderRadius: '20px' , padding:'0.5em 1.7em'}}
        onClick={onPause}>Pause</Button>
       </div>
       <ChevronLeftRoundedIcon className='left-arrow' onClick={prevSlide} fontSize='large' />

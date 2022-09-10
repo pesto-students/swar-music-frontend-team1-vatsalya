@@ -176,8 +176,6 @@ NewDialogTitle.propTypes = {
       <Modal show={addState.modal} close={handleModal}>
         <form onSubmit={addPlaylist}>
         <Divider variant='fullWidth'/>
-        <Typography variant='h6' className='name' sx={{mt:'10px', mb:'10px'}}>New Playlist </Typography>
-        <Divider variant='fullWidth'/>
           <div className="content-wrap">
             <input
               type="text"

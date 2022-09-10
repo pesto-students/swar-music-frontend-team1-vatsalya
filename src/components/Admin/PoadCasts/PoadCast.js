@@ -10,6 +10,7 @@ import axios from 'axios';
 import '../Songs/songs.css'
 import { showSuccessToast, showErrorToast } from '../../Common/Toast';
 import { WindowSharp } from '@mui/icons-material';
+import ConfirmModel from '../../PageNotFound/ConfirmModel';
 
 const Datagridstyle={width:1200,
   fontSize:'20px',
@@ -79,7 +80,10 @@ const columns = [
       renderCell: (params) =>{
           return(
               <>
-              <DeleteOutline className="userListDelete"/>
+                <ConfirmModel rowId = {params.row._id} title={"Delete PoadCast"} 
+                content={"Are you sure you want to delete this poadCast?"}
+                action={poadCastAction.deletePoadCastAction(params.row._id)}/> 
+             
               </>
           )
       }

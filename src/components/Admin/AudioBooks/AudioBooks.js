@@ -1,14 +1,17 @@
-import { Button, Dialog } from '@mui/material'
+import { Button, Dialog, IconButton } from '@mui/material'
 import React, { useState,useMemo } from 'react'
 import Box from '@mui/material/Box';
 import { DataGrid, gridClasses} from '@mui/x-data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogActions from '@material-ui/core/DialogActions';
 import { useSelector,useDispatch } from 'react-redux';
 import { audioBooksAction } from './Utils/audioBooksAdminReducer';
 import axios from 'axios';
 import '../Songs/songs.css'
 import { showSuccessToast, showErrorToast } from '../../Common/Toast';
+import ConfirmModel from '../../../components/PageNotFound/ConfirmModel';
 
 
 const Datagridstyle={width:1200,
@@ -44,51 +47,56 @@ const Datagridstyle={width:1200,
       },
     }}
 
-const columns = [
-    
-  {
-    field: 'name',
-    headerName: 'Name',
-    width: 300,
-    editable: false,
-    headerAlign:'center',
-    align: 'center'
-  },
-  {
-    field: 'language',
-    headerName: 'Language',
-    width: 300,
-    editable: false,
-    headerAlign:'center',
-    align: 'center'
-  },
-  {
-    field: 'writter',
-    headerName: 'Writter',
-    type: 'number',
-    width: 300,
-    editable: false,
-    headerAlign:'center',
-    align: 'center'
-  },
-  {
-      field: 'action',
-      headerName: 'Action',
-      width: 200,
-      headerAlign:'center',
-      align: 'center',
-      renderCell: (params) =>{
-          return(
-              <>
-              <DeleteOutline className="userListDelete"/>
-              </>
-          )
-      }
-    },
-];
+
 
 
 function AudioBookAdmin() {
+
+
+  const columns = [
+    
+    {
+      field: 'name',
+      headerName: 'Name',
+      width: 300,
+      editable: false,
+      headerAlign:'center',
+      align: 'center'
+    },
+    {
+      field: 'language',
+      headerName: 'Language',
+      width: 300,
+      editable: false,
+      headerAlign:'center',
+      align: 'center'
+    },
+    {
+      field: 'writter',
+      headerName: 'Writter',
+      type: 'number',
+      width: 300,
+      editable: false,
+      headerAlign:'center',
+      align: 'center'
+    },
+    {
+        field: 'action',
+        headerName: 'Action',
+        width: 200,
+        headerAlign:'center',
+        align: 'center',
+        renderCell: (params) =>{
+            return(
+                <>
+                <ConfirmModel rowId = {params.row._id} title={"Delete AudioBooks"} 
+                content={"Are you sure you want to delete this audioBook?"}
+                action={audioBooksAction.deleteAudioBooksAction(params.row._id)}/> 
+                </>
+            )
+        }
+      },
+  ];
   const languages = [
     {value: '', text: '--Choose an option--'},
     {value: 'Punjabi', text: 'Punjabi'},
@@ -243,6 +251,7 @@ useMemo( () => {
       </div>
 
         </Dialog>
+
 
     <div className='songsList'>
     <Box sx={{ height: 800, width: '95%' }}>

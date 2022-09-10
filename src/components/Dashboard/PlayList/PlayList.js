@@ -11,6 +11,7 @@ import { playListAction } from './Utils/postPlayListReducer';
 import jwtDecode from 'jwt-decode';
 import { token } from '../../Login/Utility/authenticatinReducer';
 import axios from 'axios';
+import { Divider } from '@mui/material';
 
 
 function QuickSearchToolbar(props) {
@@ -187,6 +188,7 @@ function Playlist() {
   return (
     <div>
     <h2 className='PlaylistTitle'>Your Playlist</h2>
+    <Divider/>
     <div className='myplaylist'>
     <div onClick={displayTable} className='allsongs'><PlaylistCard name='All Songs' number='36'/></div>
     {playListData?.map((item) => (

@@ -113,7 +113,8 @@ position: absolute;
    size: 20px;
   }
   .card{
-    max-width: 300px;
+    max-width: 400px;
+    margin: 0;
   }
   .title-total{
     max-width: 100px;
@@ -121,6 +122,7 @@ position: absolute;
   }
   .actions{
     flex-direction: column;
+    margin: 0;
   }
   .left-arrow{
     margin-top: 0;
@@ -129,5 +131,10 @@ position: absolute;
   .right-arrow{
     margin: 0;
     z-index: 2;
+    font-size: 1rem;
+    color: rgb(75, 66, 66);
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
   }
 }

@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState} from 'react'
+import React, { useMemo} from 'react'
 import Box from '@mui/material/Box';
 import { DataGrid , gridClasses} from '@mui/x-data-grid';
-import { DeleteOutline } from '@material-ui/icons';
 import "./Users.css"
 import { useSelector,useDispatch } from 'react-redux';
 import { userAction } from './Utils/usersReducer';
+import ConfirmModel from '../../PageNotFound/ConfirmModel';
 
 const Datagridstyle={width:1200,
   fontSize:'20px',
@@ -92,7 +92,12 @@ const columns = [
         renderCell: (params) =>{
             return(
                 <>
-                <DeleteOutline className="userListDelete"/>
+                 
+                <ConfirmModel rowId = {params.row._id} title={"Delete Users"} 
+                content={"Are you sure you want to delete this users?"}
+                action={userAction.deleteUsersAction(params.row._id)}/> 
+             
+            
                 </>
             )
         }
