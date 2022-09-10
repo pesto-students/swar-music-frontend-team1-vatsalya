@@ -1,9 +1,7 @@
-import React,{ useState,useMemo, useEffect } from 'react'
-import { useSelector,useDispatch } from 'react-redux';
+import React,{ useState, useEffect } from 'react'
 import './Chart.css'
 import {Doughnut} from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import { countAction, countAllByCountry } from '../Home/Utils/homeReducer';
 import axios from 'axios';
 import { token } from '../../Login/Utility/authenticatinReducer';
 

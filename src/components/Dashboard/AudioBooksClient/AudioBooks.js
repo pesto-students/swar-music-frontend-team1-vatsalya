@@ -7,10 +7,9 @@ import { songsAction} from '../../Admin/Songs/Utils/songsReducer';
 import { songAction } from '../SongsClient/Utility/songsClientReducer';
 import '../HomeClient/SongsTable/Datagridtable.css'
 import Footer from '../HomeClient/Footer/Footer';
-import { SearchRounded } from '@material-ui/icons';
-import axios from 'axios';
 import Avatar from "@mui/material/Avatar";
 import Drake from '../HomeClient/Right/Drake.jpg';
+import { audioBooksAction } from './Utility/audioBookRedcuer';
 
 
 function QuickSearchToolbar() {
@@ -38,20 +37,6 @@ function QuickSearchToolbar() {
     </Box>
   )};
 const columns = [
-  {
-    field: 'Image',
-    headerName: 'Image',
-    width: 150,
-    editable: false,
-    headerAlign:'center',
-    renderCell: () => {
-      return (
-        <>
-        <Avatar alt='shaan' src={Drake} sx={{ml:'50px'}}/>
-        </>
-      );
-    }
-  },
     {
       field: 'name',
       headerName: 'Name',
@@ -109,27 +94,27 @@ function AudioBooks() {
     const[url, setURL] = useState("url");
     const[name,setName] = useState("Kesari01");
     const[duration, setDuration] = useState("")
-    const songsData = useSelector((state) => {
+    const audioBooksData = useSelector((state) => {
         console.log("songs selector")
-      console.log(state.songsReducer);
-      return state.songsReducer
+      console.log(state.audioBooksReducer);
+      return state.audioBooksReducer
       })
-      const songsByName = useSelector((state) => {
-      console.log(state.findSongByNameReducer);
-      return state.findSongByNameReducer
+      const audioBooksByName = useSelector((state) => {
+      console.log(state.findAudioBooksByNameReducer);
+      return state.findAudioBooksByNameReducer
       })
-      console.log(songsByName.song);
+      console.log(audioBooksByName.audioBook);
       
       const dispatch = useDispatch();
       useMemo( () => {
-        dispatch(songsAction.getAllSongsAction())
+        dispatch(audioBooksAction.getAllAudioBooksAction())
       },[])
 
       useEffect( () =>{
-        setURL(songsByName.song)
-      },[songsByName])
+        setURL(audioBooksByName.audioBook)
+      },[audioBooksByName])
       useMemo(() =>{
-        dispatch(songAction.getAllSongByNameAction(name))
+        dispatch(audioBooksAction.getAllAudioBookByNameAction(name))
       },[name])
         const handleRowClick = (params) => {
               setName(params.row.name)
@@ -143,7 +128,7 @@ function AudioBooks() {
         borderRadius="25%" 
         rowHeight={50}
         components={{ Toolbar: QuickSearchToolbar }}
-         rows={songsData.songs}
+         rows={audioBooksData.audioBooks}
          columns={columns}
          getRowId ={(row) => row._id}
          pageSize={15}

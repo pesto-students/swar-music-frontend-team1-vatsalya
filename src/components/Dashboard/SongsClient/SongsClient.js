@@ -1,4 +1,4 @@
-import React,{useState,useEffect, useMemo,useRef} from 'react'
+import React,{useState,useEffect, useMemo} from 'react'
 import Box from '@mui/material/Box';
 import { DataGrid, gridClasses,GridToolbarQuickFilter,} from '@mui/x-data-grid';
 import { useSelector,useDispatch } from 'react-redux';
@@ -115,7 +115,7 @@ function QuickSearchToolbar(props) {
   
 
 function SongsClient() {
-    const[url, setURL] = useState("https://swar-app.s3.ap-south-1.amazonaws.com/Soch+Liya");
+    const[url, setURL] = useState("https://swar-app.s3.ap-south-1.amazonaws.com/Soch Liya");
     const[name,setName] = useState("Soch Liya");
     const[duration, setDuration] = useState("");
     const songsData = useSelector((state) => {
@@ -123,6 +123,9 @@ function SongsClient() {
       })
       const [tableData, setTableData] = useState(songsData.songs);
 
+      if(songsData.songs === undefined){
+        setTableData([])
+      }
       const songsByName = useSelector((state) => {
         console.log("findByName=======>")
       console.log(state.findSongByNameReducer);

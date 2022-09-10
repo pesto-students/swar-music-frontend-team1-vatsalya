@@ -92,7 +92,6 @@ const columns = [
         renderCell: (params) =>{
             return(
                 <>
-                <button className="userListEdit">Edit</button>
                 <DeleteOutline className="userListDelete"/>
                 </>
             )
@@ -117,6 +116,7 @@ const dispatch = useDispatch();
 
   
   return (
+    <div>
     <Box sx={{ height: 632.8, width: '95%' }}>
       <DataGrid
       disableColumnMenu
@@ -132,6 +132,7 @@ const dispatch = useDispatch();
         sx={Datagridstyle}
       />
     </Box>
+    </div>
   )
 }
 

@@ -11,6 +11,7 @@ import { SearchRounded } from '@material-ui/icons';
 import axios from 'axios';
 import Avatar from "@mui/material/Avatar";
 import Drake from '../HomeClient/Right/Drake.jpg';
+import { poadCastsAction } from './Utility/poadCastsReducer';
 
 function QuickSearchToolbar() {
   return (
@@ -41,20 +42,6 @@ function QuickSearchToolbar() {
   )};
 
 const columns = [
-    {
-      field: 'Image',
-      headerName: 'Image',
-      width: 150,
-      editable: false,
-      headerAlign:'center',
-      renderCell: () => {
-        return (
-          <>
-          <Avatar alt='shaan' src={Drake} sx={{ml:'50px'}}/>
-          </>
-        );
-      }
-    },
     {
       field: 'name',
       headerName: 'Name',
@@ -110,31 +97,31 @@ const columns = [
   ];
 
 function Podcasts() {
-    const[url, setURL] = useState("url");
-    const[name,setName] = useState("Kesari01");
+    const[url, setURL] = useState("https://swar-app.s3.ap-south-1.amazonaws.com/Soch+Liya");
+    const[name,setName] = useState("Soch Liya");
     const[duration, setDuration] = useState("")
-    const songsData = useSelector((state) => {
-        console.log("songs selector")
-      console.log(state.songsReducer);
-      return state.songsReducer
+      const poadCastData = useSelector((state) => {
+        console.log("poadCast selector")
+      console.log(state.poadCastsReducer);
+      return state.poadCastsReducer
       })
-      const songsByName = useSelector((state) => {
-        console.log("find By song selector")
-      console.log(state.findSongByNameReducer);
-      return state.findSongByNameReducer
+
+      const poadCastByName = useSelector((state) => {
+        console.log("findByName=======>")
+      console.log(state.findPoadCastByNameReducer);
+      return state.findPoadCastByNameReducer
       })
-      console.log(songsByName.song);
       
       const dispatch = useDispatch();
       useMemo( () => {
-        dispatch(songsAction.getAllSongsAction())
+        dispatch(poadCastsAction.getAllPoadCastsAction())
       },[])
 
       useEffect( () =>{
-        setURL(songsByName.song)
-      },[songsByName])
+        setURL(poadCastByName.poadCast)
+      },[poadCastByName])
       useMemo(() =>{
-        dispatch(songAction.getAllSongByNameAction(name))
+        dispatch(poadCastsAction.getAllPoadCastByNameAction(name))
       },[name])
         const handleRowClick = (params) => {
               setName(params.row.name)
@@ -149,7 +136,7 @@ function Podcasts() {
         borderRadius="25%" 
         rowHeight={50}
         components={{ Toolbar: QuickSearchToolbar }}
-         rows={songsData.songs}
+         rows={poadCastData.poadCasts}
          columns={columns}
          getRowId ={(row) => row._id}
          pageSize={15}

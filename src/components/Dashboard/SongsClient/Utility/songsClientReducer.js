@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { token } from '../../../Login/Utility/authenticatinReducer';
 
 export const songService = {
     findSongsByName
@@ -55,7 +56,10 @@ function getAllSongByNameAction(name){
 }
 
 export async function findSongsByName(name){
-    return await axios.get(`http://localhost:8900/api/songs/name/${name}`).then(
+    return await axios.get(`https://swar-music.herokuapp.com/api/songs/name/${name}`,{
+        headers: {
+          'Authorization':  token()
+        }}).then(
           (res) => {
             console.log("songs name by response----")
             console.log(res.data)

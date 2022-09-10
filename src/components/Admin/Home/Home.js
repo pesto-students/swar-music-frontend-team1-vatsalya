@@ -2,34 +2,27 @@ import { Grid, Container, Typography, Stack } from '@mui/material'
 import Card from '@mui/material/Card';
 import { DataGrid,gridClasses } from '@mui/x-data-grid';
 import CardContent from '@mui/material/CardContent';
-import React, { useState,useMemo, useEffect } from 'react'
+import React, {useMemo, useEffect } from 'react'
 import { useSelector,useDispatch } from 'react-redux';
-import axios from 'axios';
 import { fShortenNumber } from '../utils/formatNumber';
 import PieChart from '../Chart/PieChart';
 import './home.css'
 import { countAction } from './Utils/homeReducer';
 import { Link } from 'react-router-dom';
 import Logout from '../Logout/Logout';
+import { userAction } from '../Users/Utils/usersReducer';
 
-const rows= [
-  { id: 1, col1: '1', col2: 'World',col3:'Data',col4:'World' , col5:'Shine'},
-  { id: 2, col1: '2', col2: 'Sky is pink',col3:'Data',col4:'World',col5:'Shine'}, 
-  { id: 3, col1: '3', col2: 'is Amazing',col3:'Data',col4:'World' , col5:'Shine'},
-  { id: 4, col1: '4', col2: 'is Amazing',col3:'Data',col4:'World',col5:'Shine' },
-  { id: 5, col1: '5', col2: 'is Amazing',col3:'Data',col4:'World',col5:'Shine' },
-];
 
 const columns = [
-  { field: 'col1', headerName: '#', width: 80, headerAlign:'center',
+  {field: 'username', headerName: 'USERNAME', width: 80, headerAlign:'center',
   align: 'center' },
-  { field: 'col2', headerName: 'TITLE', width: 200 , headerAlign:'center',
+  { field: 'email', headerName: 'EMAIL', width: 200 , headerAlign:'center',
   align: 'center'},
-  { field: 'col3', headerName: 'ARTIST', width: 100, headerAlign:'center',
+  { field: 'password', headerName: 'PASSWORD', width: 100, headerAlign:'center',
   align: 'center' },
-  { field: 'col4', headerName: 'TIME', width: 150, headerAlign:'center',
+  { field: 'isAdmin', headerName: 'ADMIN', width: 150, headerAlign:'center',
   align: 'center' },
-  { field: 'col5', headerName: 'ALBUM', width: 250, headerAlign:'center',
+  { field: 'country', headerName: 'COUNTRY', width: 250, headerAlign:'center',
       align: 'center' },
 ];
 
@@ -77,6 +70,12 @@ function Home() {
   return state.countSongsReducer
   })
 
+  const totalUsersDatas = useSelector((state) => {
+    console.log("adim user----")
+  console.log(state.usersReducer);
+  return state.usersReducer.users
+})
+
   const usersData = useSelector((state) => {
     console.log("users selector")
   console.log(state.countUsersReducer);
@@ -102,6 +101,10 @@ function Home() {
     dispatch(countAction.countAllUserAction())
     dispatch(countAction.countAllPoadCastAction())
     dispatch(countAction.countAllAudioBooksAction())
+  },[])
+
+  useMemo( () => {
+    dispatch(userAction.getAllUserAction())
   },[])
 
   return (
@@ -215,7 +218,7 @@ function Home() {
        New Users
       </Typography>
     <Stack direction='row' spacing={3} sx={{alignContent:'center',alignItems:'center'}}>
-    <DataGrid  rows={rows} columns={columns} sx={Datagridstyle}/>
+    <DataGrid  rows={totalUsersDatas} columns={columns} sx={Datagridstyle}  getRowId ={(row) => row._id}/>
     <div className="dashboard_card">
         <div className="pie_chart" >
             <PieChart/>

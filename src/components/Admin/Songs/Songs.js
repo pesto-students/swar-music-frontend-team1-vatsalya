@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import { DataGrid,gridClasses} from '@mui/x-data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import DialogTitle from '@mui/material/DialogTitle';
-import LinearProgress from '@mui/material/LinearProgress';
 import './songs.css'
 import { useSelector,useDispatch } from 'react-redux';
 import { songsAction } from './Utils/songsReducer';
@@ -252,9 +251,6 @@ useMemo( () => {
         getRowId ={(row) => row._id}
         pageSize={15}
         rowsPerPageOptions={[15]}
-        components={{  LoadingOverlay: LinearProgress}}
-        loading
-        {...songsData.songs}
         checkboxSelection
         sx={Datagridstyle}
       />
