@@ -15,6 +15,7 @@ import {playListAction} from '../PlayList/Utils/postPlayListReducer';
 import jwtDecode from 'jwt-decode';
 import { token } from '../../Login/Utility/authenticatinReducer';
 import { showSuccessToast } from '../../Common/Toast';
+import axios from 'axios';
 
 const NewButton = styled(Button)(()=>({
   color: 'white', backgroundColor: 'black', borderColor: 'black', borderRadius: '20px',
@@ -104,18 +105,27 @@ NewDialogTitle.propTypes = {
   })
 
 
-  const datas = useSelector((state) => {
-    return state.getAllPlayListReducer.playList
-  })
- 
-  useEffect(() =>{
-    dispatch(playListAction.getAllPlayListByIdAction(jwtDecode(token()).id));
-  },[])
 
- useEffect(() =>{
-  console.log("This is the right data" + data);
-  setData(datas)
- },[])
+const fetchPlayList = () =>{
+  axios.get(`https://swar-music.herokuapp.com/api/songs/get/playlist/${jwtDecode(token()).id}`,{
+  headers: {
+    'Authorization':  token()
+  }}).then(
+    (res) => {
+      console.log("welcome back user Id")
+      setData(res.data)
+      console.log(res.data);
+      return res.data;
+    }
+  ).catch((err) => {
+    return err;
+   
+  })
+}
+
+useEffect(() =>{
+  fetchPlayList()
+},[])
 
   const addPlaylist = e => {
     e.preventDefault()
