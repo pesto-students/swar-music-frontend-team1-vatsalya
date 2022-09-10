@@ -1,11 +1,11 @@
 # SWAR MUSIC
 
-Swar music is a music player, on which users can listen to music,poadcast
-and audioBooks.On other hand users can create,edit and delete their playlist.
+Swar music is a music player, on which users can listen to music,poadcastand audioBooks.On other hand users can create,edit and delete their playlist.
 
 There are two types of users:
 
 1.Admin user - Admin will able upload songs,poadcast and audiobooks to s3 bucket
+
 2.Client user - Client will able to listen to music,poadcast and audiobooks.Whereas they
 can also create,edit and delete playlist.
 
