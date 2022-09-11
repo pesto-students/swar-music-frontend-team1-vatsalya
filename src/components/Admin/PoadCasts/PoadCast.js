@@ -168,6 +168,7 @@ const onSubmit = (e) => {
         },
       })
       showSuccessToast("PoadCast has been added to S3 bucket!")
+      setTimeout(() => { window.location.reload(true)},1000)
     }).catch((error) =>{
       showErrorToast("Unable to add PoadCast to S3 bucket!")
       console.log(error);

@@ -171,6 +171,7 @@ const onSubmit = (e) => {
         },
       })
       showSuccessToast("Songs has been added to S3 bucket!")
+      setTimeout(() => { window.location.reload(true)},1000)
     }).catch((error) =>{
       showErrorToast("Unable to add Song to S3 bucket!")
       console.log(error);
