@@ -4,16 +4,20 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { IconButton, Typography,TextField, Divider } from '@mui/material';
+import { IconButton, Typography, Divider } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import './Playlistcard.css';
-import { useSelector,useDispatch } from 'react-redux';
-import { playListAction } from '../Utils/postPlayListReducer';
+import { useDispatch } from 'react-redux';
+import { editPlayListById, playListAction } from '../Utils/postPlayListReducer';
+import axios from 'axios';
+import { showSuccessToast } from '../../../Common/Toast';
+import { token } from '../../../Login/Utility/authenticatinReducer';
 
 function PlaylistCard(props) { 
   const[show,setShow] = useState(false);
   const[editshow,setEditShow]=useState(false);
+  const[name, setName] = useState(props.name);
   const dispatch = useDispatch();
   console.log("show====>>>>>>>>" + show)
   console.log("Key=========>" + props.id);
@@ -22,6 +26,11 @@ function PlaylistCard(props) {
     console.log("state delete=======>" + state.deletePlayListReducer)
     return state.deletePlayListReducer;
   }
+
+  const handleName = (e) =>{
+    setName(e.target.value);
+  }
+
   
   return (
     <div className='PlaylistContainer'>
@@ -67,27 +76,26 @@ function PlaylistCard(props) {
         aria-labelledby="confirm-dialog-edit">
         <DialogTitle id="confirm-dialog-edit">Edit Your PlayList Name</DialogTitle>
         <Divider/>
+        <form>
         <DialogContent > 
-        <TextField id="playlist"  placeholder='Change your playlist Name' variant="outlined"
-        sx={{
-          mt:'10px',
-          '&.MuiTextField-root':{
-            '&:hover': {
-              backgroundColor:'grey',
-              color:'white'
-            }
-          }
-        }}
-        />
+        
+        <input
+              type="text"
+              placeholder="Give Your Playlist a Name"
+              value={name}
+              onChange={handleName}
+              required
+            />
 
         </DialogContent>
         <DialogActions >
-          <Button autoFocus variant='contained'  type='submit'  sx={{alignItems:'center'}}
-          onClick={()=>{setEditShow(false)}}
+          <Button autoFocus variant='contained'  sx={{alignItems:'center'}}
+          onClick={() =>{dispatch(playListAction.updatePlayListById(props.id,name))}}
           >
             Save
           </Button>
         </DialogActions>
+        </form>
      </Dialog>
         
     </div>

@@ -7,7 +7,8 @@ export const playListService = {
     getAllPlayListByUserId,
     addSongToPlayList,
     findSongsByPlayListId,
-    deletePlayListById
+    deletePlayListById,
+    editPlayListById
 }
 
 export const playListAction = {
@@ -15,7 +16,8 @@ export const playListAction = {
     getAllPlayListByIdAction,
     addSongsToPlayListAction,
     getPlayListAction,
-    deletePlayListAction
+    deletePlayListAction,
+    updatePlayListById
 }
 
 
@@ -34,7 +36,10 @@ const playListConstants = {
     GET_SONGS_BY_PLAYLIST_FAILURE: 'GET_SONGS_BY_PLAYLIST_FAILURE',
     DELETE_PLAYLIST_BY_ID_REQUEST: ' DELETE_PLAYLIST_BY_ID_REQUEST',
     DELETE_PLAYLIST_BY_ID_SUCCESS: 'DELETE_PLAYLIST_BY_ID_SUCCESS',
-    DELETE_PLAYLIST_BY_ID_FAILURE: 'DELETE_PLAYLIST_BY_ID_FAILURE'
+    DELETE_PLAYLIST_BY_ID_FAILURE: 'DELETE_PLAYLIST_BY_ID_FAILURE',
+    UPDATE_PLAYLIST_BY_ID_REQUEST: 'UPDATE_PLAYLIST_BY_ID_REQUEST',
+    UPDATE_PLAYLIST_BY_ID_SUCCESS: 'UPDATE_PLAYLIST_BY_ID_SUCCESS',
+    UPDATE_PLAYLIST_BY_ID_FAILURE: 'UPDATE_PLAYLIST_BY_ID_FAILURE'
 }
 
 export const deletePlayListReducer = (playList={}, action) =>{
@@ -123,6 +128,26 @@ export const getAllPlayListReducer = (playList=[], action) =>{
                 playList: action.playList
             };
         case playListConstants.GET_PLAYLIST_BY_ID_FAILURE:
+            return {};
+        default:
+            return playList;
+   }
+}
+
+
+export const editPlayListReducer = (playList={}, action) =>{
+    switch(action.type){
+        case playListConstants.UPDATE_PLAYLIST_BY_ID_REQUEST:
+            return {
+                loggingIn: true,
+                playList: playList
+            };
+        case playListConstants.UPDATE_PLAYLIST_BY_ID_SUCCESS:
+            return {
+                loggedIn: true,
+                playList: action.playList
+            };
+        case playListConstants.UPDATE_PLAYLIST_BY_ID_FAILURE:
             return {};
         default:
             return playList;
@@ -231,6 +256,27 @@ function getAllPlayListByIdAction(userId){
     }
 }
 
+function updatePlayListById(playListId,name){
+    return dispatch => {
+        dispatch(request());
+        playListService.editPlayListById(playListId,name)
+        .then(
+            playList => dispatch(success(playList)),
+            error => dispatch(failure(error.toString()))
+            );
+    };
+    function request(){
+        console.log("enter request")
+        return {type: playListConstants.UPDATE_PLAYLIST_BY_ID_REQUEST}
+    }
+    function success(playList){
+        return {type: playListConstants.UPDATE_PLAYLIST_BY_ID_SUCCESS, playList}
+    }
+    function failure(error){
+        return {type: playListConstants.UPDATE_PLAYLIST_BY_ID_FAILURE, error}
+    }
+}
+
 export async function createPlayListForm(user_id,name){
     const initialPlayListObject = {user_id: user_id, name: name};
     console.log(initialPlayListObject)
@@ -307,6 +353,27 @@ export async function deletePlayListById(playListId){
         }}).then(
           (res) => {
             showSuccessToast("PlayList Has Been Deleted!")
+            console.log(res.data);
+            setTimeout(() => { window.location.reload(true)},1000)
+            
+            return res.data;
+          }
+        ).catch((err) => {
+          return err;
+         
+        })
+}
+
+export async function editPlayListById(playListId,name){
+    console.log("enter the edit playlist")
+    const initialPlayListObject = {'name': name};
+    return await axios.put(`https://swar-music.herokuapp.com/api/songs/update/playList/${playListId}`,initialPlayListObject,{
+        headers: {
+          'Authorization':  token()
+        }}).then(
+          (res) => {
+            showSuccessToast("PlayList Has Been Updated")
+            console.log("PlayList Has Been Updated")
             console.log(res.data);
             setTimeout(() => { window.location.reload(true)},1000)
             

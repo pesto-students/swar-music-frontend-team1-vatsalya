@@ -14,12 +14,12 @@ import { findAudioBooksByNameReducer} from "../Dashboard/AudioBooksClient/Utilit
 import { audioBooksAdminReducer,deleteAudioBooksAdminReducer } from "../Admin/AudioBooks/Utils/audioBooksAdminReducer";
 import { poadCastsAdminReducer,deletePoadCastsAdminReducer } from "../Admin/PoadCasts/Utils/poadCastAdminReducer.js";
 import { countSongsReducer,countUsersReducer, countPoadCastsReducer,countAudioBooksReducer, countByCountyReducer } from "../Admin/Home/Utils/homeReducer";
-import { createPlayListReducer,getAllPlayListReducer,createPlayListSongsReducer,getPlayListSongsReducer,deletePlayListReducer } from "../../components/Dashboard/PlayList/Utils/postPlayListReducer"
+import { createPlayListReducer,getAllPlayListReducer,createPlayListSongsReducer,getPlayListSongsReducer,deletePlayListReducer,editPlayListReducer  } from "../../components/Dashboard/PlayList/Utils/postPlayListReducer"
 
 export const store = createStore(combineReducers({usersReducer,songsReducer, submitUserReducer,loginUserReducer,findSongByNameReducer,
 poadCastsReducer,findPoadCastByNameReducer,audioBooksReducer,findAudioBooksByNameReducer,audioBooksAdminReducer,poadCastsAdminReducer
 ,countSongsReducer, countUsersReducer, countPoadCastsReducer,countAudioBooksReducer, countByCountyReducer,createPlayListReducer,
 getAllPlayListReducer,createPlayListSongsReducer,getPlayListSongsReducer,deletePlayListReducer,deleteAudioBooksAdminReducer,deleteSongsReducer,
-deletePoadCastsAdminReducer,deleteUserReducer }), applyMiddleware(thunk)); 
+deletePoadCastsAdminReducer,deleteUserReducer,editPlayListReducer  }), applyMiddleware(thunk)); 
 
 
