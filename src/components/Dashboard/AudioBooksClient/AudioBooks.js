@@ -60,8 +60,8 @@ const columns = [
       }
     },
     {
-      field: 'artist',
-      headerName: 'Artists',
+      field: 'writter',
+      headerName: 'Writter',
       width: 300,
       editable: false,
       headerAlign:'center',

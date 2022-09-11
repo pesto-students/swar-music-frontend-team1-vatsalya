@@ -69,8 +69,8 @@ const columns = [
       }
     },
     {
-      field: 'artist',
-      headerName: 'Artists',
+      field: 'speaker',
+      headerName: 'Speaker',
       width: 150,
       editable: false,
       headerAlign:'center',
