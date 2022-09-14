@@ -31,14 +31,10 @@ const handleSubmit=(event)=>{
   }
 
   const id = jwtDecode(token()).id
-  console.log("id====")
-  console.log(id)
 
-
-  
-  axios.post(`https://swar-music.herokuapp.com/api/users/feedBack/${id}`,{headers: {
-    'Authorization':  localStorage.getItem('Token')
-  }},feedBackObject).then(
+  axios.post(`https://swar-music.herokuapp.com/api/users/feedBack/${id}`,feedBackObject,{headers: {
+    'Authorization':  token()
+  }}).then(
     (res) =>{
       showSuccessToast("Thanks for your FeedBack!")
     }).catch((error) =>{
