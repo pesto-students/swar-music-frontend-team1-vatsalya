@@ -123,8 +123,6 @@ function SongsClient() {
       })
   
       const songsByName = useSelector((state) => {
-        console.log("findByName=======>")
-      console.log(state.findSongByNameReducer);
       return state.findSongByNameReducer
       })
       

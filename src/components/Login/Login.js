@@ -24,7 +24,6 @@ function Login({handleChange}) {
     }
 
     const login = useSelector((state) =>{
-      console.log(state.loginUserReducer.user)
       users.current = state.loginUserReducer.user;
       return state.loginUserReducer
     })

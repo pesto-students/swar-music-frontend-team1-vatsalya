@@ -65,36 +65,24 @@ function Home() {
   const dispatch = useDispatch();
 
   const songsData = useSelector((state) => {
-    console.log("songs selector")
-  console.log(state.countSongsReducer);
   return state.countSongsReducer
   })
 
   const totalUsersDatas = useSelector((state) => {
-    console.log("adim user----")
-  console.log(state.usersReducer);
   return state.usersReducer.users
 })
 
   const usersData = useSelector((state) => {
-    console.log("users selector")
-  console.log(state.countUsersReducer);
   return state.countUsersReducer
   })
 
   const poadCastData = useSelector((state) => {
-    console.log("poadCast selector")
-  console.log(state.countPoadCastsReducer);
   return state.countPoadCastsReducer
   })
 
   const audioBooksData = useSelector((state) => {
-    console.log("countAudioBooks  selector")
-  console.log(state.countAudioBooksReducer );
   return state.countAudioBooksReducer 
   })
-  console.log("count all songs");
-  console.log(usersData)
 
   useEffect(()=>{
     dispatch(countAction.countAllSongsAction())

@@ -158,7 +158,6 @@ const onSubmit = (e) => {
   console.log(retrieveUrlObject)
   axios.put('https://swar-music.herokuapp.com/api/poadcast/upload/retrieve',retrieveUrlObject).then(
     (res) =>{
-      console.log(res.data)
       const formData = new FormData();
       formData.append('file', file);
       axios
@@ -171,15 +170,11 @@ const onSubmit = (e) => {
       setTimeout(() => { window.location.reload(true)},1000)
     }).catch((error) =>{
       showErrorToast("Unable to add PoadCast to S3 bucket!")
-      console.log(error);
     })
-    console.log(file)
     setOpen(false);
      
 }
 const poadCastData = useSelector((state) => {
-  console.log("poadCast selector")
-console.log(state.poadCastsAdminReducer);
 return state.poadCastsAdminReducer
 })
 

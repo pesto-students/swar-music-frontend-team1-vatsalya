@@ -161,7 +161,6 @@ const onSubmit = (e) => {
   console.log(retrieveUrlObject)
   axios.put(' https://swar-music.herokuapp.com/api/songs/upload/retrieve',retrieveUrlObject).then(
     (res) =>{
-      console.log(res.data)
       const formData = new FormData();
       formData.append('file', file);
       axios
@@ -174,14 +173,10 @@ const onSubmit = (e) => {
       setTimeout(() => { window.location.reload(true)},1000)
     }).catch((error) =>{
       showErrorToast("Unable to add Song to S3 bucket!")
-      console.log(error);
     })
-    console.log(file)
     setOpen(false);
 }
 const songsData = useSelector((state) => {
-  console.log("songs selector")
-console.log(state.songsReducer);
 return state.songsReducer
 })
 

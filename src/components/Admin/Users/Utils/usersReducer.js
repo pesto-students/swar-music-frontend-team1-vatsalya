@@ -24,7 +24,6 @@ export const userAction = {
 export const usersReducer = (users = [], action) =>{
     switch(action.type){
         case usersConstants.GET_ALL_USER_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 users : users
@@ -37,7 +36,6 @@ export const usersReducer = (users = [], action) =>{
         case usersConstants.GET_ALL_USER_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return users;
    }
 }
@@ -45,7 +43,6 @@ export const usersReducer = (users = [], action) =>{
 export const deleteUserReducer = (songs = [], action) =>{
     switch(action.type){
         case usersConstants.DELETE_USER_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 songs : songs
@@ -58,7 +55,6 @@ export const deleteUserReducer = (songs = [], action) =>{
         case usersConstants.DELETE_USER_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return songs;
    }
 }
@@ -73,7 +69,6 @@ function getAllUserAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: usersConstants.GET_ALL_USER_REQUEST}
     }
     function success(users){
@@ -94,7 +89,6 @@ function  deleteUsersAction(id){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: usersConstants.DELETE_USER_REQUEST}
     }
     function success(user){
@@ -111,33 +105,24 @@ export async function getAllUsers(){
           'Authorization': token()
         }}).then(
           (res) => {
-            // setUsers(res.data);
-            console.log(res.data)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }
 
 export async function deleteUsers(id){
-    console.log("this is the id =>" + id)
     return await axios.delete(`https://swar-music.herokuapp.com/api/users/${id}`,{
         headers: {
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log("poadCast")
-            console.log(res.data)
             showSuccessToast("User Has been deleted!")
             setTimeout(() => { window.location.reload(true)},1000)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }
-
-// export const store = createStore(combineReducers({usersReducer}), applyMiddleware(thunk)); 

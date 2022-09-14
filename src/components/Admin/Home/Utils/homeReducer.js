@@ -39,7 +39,6 @@ export const countAction = {
 export const countByCountyReducer = (country = [], action) =>{
     switch(action.type){
         case homeConstants.COUNT_ALL_BY_COUNTRY_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 country : country
@@ -52,7 +51,6 @@ export const countByCountyReducer = (country = [], action) =>{
         case homeConstants.COUNT_ALL_BY_COUNTRY_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return country;
    }
 }
@@ -61,7 +59,6 @@ export const countByCountyReducer = (country = [], action) =>{
 export const countAudioBooksReducer = (audioBooks = 0, action) =>{
     switch(action.type){
         case homeConstants.COUNT_ALL_AUDIOBOOKS_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 audioBooks : audioBooks
@@ -74,7 +71,6 @@ export const countAudioBooksReducer = (audioBooks = 0, action) =>{
         case homeConstants.COUNT_ALL_AUDIOBOOKS_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return audioBooks;
    }
 }
@@ -82,7 +78,6 @@ export const countAudioBooksReducer = (audioBooks = 0, action) =>{
 export const countPoadCastsReducer = (poadCast = 0, action) =>{
     switch(action.type){
         case homeConstants.COUNT_ALL_POADCAST_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 poadCast : poadCast
@@ -95,7 +90,6 @@ export const countPoadCastsReducer = (poadCast = 0, action) =>{
         case homeConstants.COUNT_ALL_POADCAST_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return poadCast;
    }
 }
@@ -103,7 +97,6 @@ export const countPoadCastsReducer = (poadCast = 0, action) =>{
 export const countSongsReducer = (songs = 0, action) =>{
     switch(action.type){
         case homeConstants.COUNT_ALL_SONGS_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 songs : songs
@@ -116,7 +109,6 @@ export const countSongsReducer = (songs = 0, action) =>{
         case homeConstants.COUNT_ALL_SONGS_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return songs;
    }
 }
@@ -124,7 +116,6 @@ export const countSongsReducer = (songs = 0, action) =>{
 export const countUsersReducer = (users = 0, action) =>{
     switch(action.type){
         case homeConstants.COUNT_ALL_USERS_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 users : users
@@ -137,7 +128,6 @@ export const countUsersReducer = (users = 0, action) =>{
         case homeConstants.COUNT_ALL_USERS_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return users;
    }
 }
@@ -152,7 +142,6 @@ function countAllByCountryAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type:  homeConstants.COUNT_ALL_BY_COUNTRY_REQUEST}
     }
     function success(country){
@@ -173,7 +162,6 @@ function countAllAudioBooksAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type:  homeConstants.COUNT_ALL_AUDIOBOOKS_REQUEST}
     }
     function success(audioBooks){
@@ -194,7 +182,6 @@ function countAllPoadCastAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type:  homeConstants.COUNT_ALL_POADCAST_REQUEST}
     }
     function success(poadCast){
@@ -215,7 +202,6 @@ function countAllSongsAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type:  homeConstants.COUNT_ALL_SONGS_REQUEST}
     }
     function success(songs){
@@ -236,7 +222,6 @@ function countAllUserAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type:  homeConstants.COUNT_ALL_USERS_REQUEST}
     }
     function success(users){
@@ -253,12 +238,10 @@ export async function countAllSongs(){
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log(res.data)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }
 
@@ -268,12 +251,10 @@ export async function countAllUser(){
           'Authorization': token()
         }}).then(
           (res) => {
-            console.log(res.data)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }
 
@@ -283,12 +264,10 @@ export async function countAllPoadCast(){
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log(res.data)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }
 
@@ -298,12 +277,10 @@ export async function countAllAudioBooks(){
           'Authorization': token()
         }}).then(
           (res) => {
-            console.log(res.data)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }
 
@@ -313,12 +290,9 @@ export async function countAllByCountry(){
           'Authorization': token()
         }}).then(
           (res) => {
-            console.log("country----")
-            console.log(res.data)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }

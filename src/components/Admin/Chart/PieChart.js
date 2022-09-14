@@ -35,7 +35,6 @@ function PieChart() {
         'Authorization':  token()
       }}).then(
         (res) => {
-          console.log("country----")
           for (let i = 0; i < res.data.length; i++) {
             label.push(res.data[i].country);
             data.push(res.data[i].users)
@@ -55,12 +54,10 @@ function PieChart() {
               labels: label,
           }
       )
-          console.log(res.data)
           return res.data;
     
         }
       ).catch((err) => {
-        console.log(err);
       })
 
     

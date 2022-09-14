@@ -19,11 +19,8 @@ function PlaylistCard(props) {
   const[editshow,setEditShow]=useState(false);
   const[name, setName] = useState(props.name);
   const dispatch = useDispatch();
-  console.log("show====>>>>>>>>" + show)
-  console.log("Key=========>" + props.id);
 
   const deletePlayList = (state) =>{
-    console.log("state delete=======>" + state.deletePlayListReducer)
     return state.deletePlayListReducer;
   }
 

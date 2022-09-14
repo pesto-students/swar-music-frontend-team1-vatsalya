@@ -101,14 +101,10 @@ function Podcasts() {
     const[name,setName] = useState("Soch Liya");
     const[duration, setDuration] = useState("")
       const poadCastData = useSelector((state) => {
-        console.log("poadCast selector")
-      console.log(state.poadCastsReducer);
       return state.poadCastsReducer
       })
 
       const poadCastByName = useSelector((state) => {
-        console.log("findByName=======>")
-      console.log(state.findPoadCastByNameReducer);
       return state.findPoadCastByNameReducer
       })
       

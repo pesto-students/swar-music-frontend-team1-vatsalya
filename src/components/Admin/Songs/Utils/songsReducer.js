@@ -24,7 +24,6 @@ export const songsAction = {
 export const songsReducer = (songs = [], action) =>{
     switch(action.type){
         case songsConstants.GET_ALL_SONGS_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 songs : songs
@@ -37,7 +36,6 @@ export const songsReducer = (songs = [], action) =>{
         case songsConstants.GET_ALL_SONGS_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return songs;
    }
 }
@@ -45,7 +43,6 @@ export const songsReducer = (songs = [], action) =>{
 export const deleteSongsReducer = (songs = [], action) =>{
     switch(action.type){
         case songsConstants.DELETE_SONG_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 songs : songs
@@ -58,7 +55,6 @@ export const deleteSongsReducer = (songs = [], action) =>{
         case songsConstants.DELETE_SONG_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return songs;
    }
 }
@@ -73,7 +69,6 @@ function getAllSongsAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: songsConstants.GET_ALL_SONGS_REQUEST}
     }
     function success(songs){
@@ -94,7 +89,6 @@ function  deleteSongsAction(id){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: songsConstants.DELETE_SONG_REQUEST}
     }
     function success(song){
@@ -111,33 +105,24 @@ export async function getAllSongs(){
           'Authorization':  token()
         }}).then(
           (res) => {
-            // setUsers(res.data);
-            console.log("songs")
-            console.log(res.data)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }
 
 export async function deleteSongs(id){
-    console.log("this is the id =>" + id)
     return await axios.delete(`https://swar-music.herokuapp.com/api/songs/${id}`,{
         headers: {
           'Authorization':  token()
         }}).then(
           (res) => {
-            // setUsers(res.data);
-            console.log("poadCast")
-            console.log(res.data)
             showSuccessToast("Song Has been deleted!")
             setTimeout(() => { window.location.reload(true)},1000)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }

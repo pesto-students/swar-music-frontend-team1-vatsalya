@@ -6,21 +6,19 @@ import jwtDecode from 'jwt-decode';
 import { token,user } from './Utility/authenticatinReducer';
 
 export function PrivateRoutes({ children }) {
-    if(token() == null || token() == '' || jwtDecode(token()).exp < Date.now() / 1000){
+    if(token() == null || token() === '' || jwtDecode(token()).exp < Date.now() / 1000){
         return <Navigate to="/"/>
        }
-    // authorized so return child components
     return children;
 }
 
 export function PrivateAdminRoutes({ children }) {
-    if(token() == null || token() == '' || jwtDecode(token()).exp < Date.now() / 1000){
+    if(token() == null || token() === '' || jwtDecode(token()).exp < Date.now() / 1000){
         return <Navigate to="/"/>
        }
        else if(!jwtDecode(token()).isAdmin){
         return <Navigate to="/"/>
        }
-    // authorized so return child components
     return children;
 }
 

@@ -72,7 +72,6 @@ function signUpActions(username,email,password,confirmPassword,country){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: authentionConstants.CREATE_USER_REQUEST}
     }
     function success(user){
@@ -93,7 +92,6 @@ function logInActions(username,password,home){
             );
     };
     function request(){
-        console.log("enter login request")
         return {type: authentionConstants.LOGIN_USER_REQUEST}
     }
     function success(token,user){
@@ -109,14 +107,12 @@ export async function registerForm(username,email,password,confirmPassword,count
     country: country};
     return await axios.post("https://swar-music.herokuapp.com/api/auth/register",initialSignUpObject).then(
           (res) => {
-            console.log(res.data)
             showSuccessToast("Thank you for signing up with us!")
             return res.data;
       
           }
         ).catch((err) => {
           showErrorToast("Something is wrong!")
-          console.log(err);
         })
 }
 

@@ -28,22 +28,18 @@ const handleSubmit=(event)=>{
   const feedBackObject = {
     "feedBack": feedBack
   }
-  console.log(feedBackObject);
 
   const id = jwtDecode(localStorage.getItem('Token')).id.trim()
-  console.log("jwt id-----")
-  console.log(id);
+
 
   
   axios.post(`https://swar-music.herokuapp.com/api/users/feedBack/${id}`,{headers: {
     'Authorization':  localStorage.getItem('Token')
   }},feedBackObject).then(
     (res) =>{
-      console.log(res.data);
       showSuccessToast("Thanks for your FeedBack!")
     }).catch((error) =>{
       showErrorToast("Unable to deliver FeeBack!Please try again later!")
-      console.log(error);
     })
 }
 return (

@@ -91,15 +91,11 @@ function AudioBooks() {
     const[name,setName] = useState("Soch Liya");
     const[duration, setDuration] = useState("")
     const audioBooksData = useSelector((state) => {
-        console.log("songs selector")
-      console.log(state.audioBooksReducer);
       return state.audioBooksReducer
       })
       const audioBooksByName = useSelector((state) => {
-      console.log(state.findAudioBooksByNameReducer);
       return state.findAudioBooksByNameReducer
       })
-      console.log(audioBooksByName.audioBook);
       
       const dispatch = useDispatch();
       useMemo( () => {

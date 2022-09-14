@@ -23,7 +23,6 @@ export const poadCastsAction = {
 export const poadCastsReducer = (poadCasts = [], action) =>{
     switch(action.type){
         case poadCastConstants.GET_ALL_POADCAST_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 poadCasts : poadCasts
@@ -36,7 +35,6 @@ export const poadCastsReducer = (poadCasts = [], action) =>{
         case poadCastConstants.GET_ALL_POADCAST_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return poadCasts;
    }
 }
@@ -69,7 +67,6 @@ function getAllPoadCastsAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: poadCastConstants.GET_ALL_POADCAST_REQUEST}
     }
     function success(poadCasts){
@@ -90,7 +87,6 @@ function getAllPoadCastByNameAction(name){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: poadCastConstants.GET_POADCAST_BY_NAME_REQUEST}
     }
     function success(poadCast){
@@ -107,9 +103,6 @@ export async function getAllPoadCasts(){
           'Authorization':  token()
         }}).then(
           (res) => {
-            // setUsers(res.data);
-            console.log("poadCasts")
-            console.log(res.data)
             return res.data;
       
           }
@@ -121,12 +114,9 @@ export async function getAllPoadCasts(){
 export async function findPoadCastByName(name){
     return await axios.get(`https://swar-music.herokuapp.com/api/poadcast/name/${name}`).then(
           (res) => {
-            console.log("songs name by response----")
-            console.log(res.data)
             return res.data;
           }
         ).catch((err) => {
-          console.log(err);
           return err;
         })
 }

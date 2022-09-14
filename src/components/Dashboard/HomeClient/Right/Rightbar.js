@@ -22,9 +22,6 @@ function FavArtist() {
       </Stack>
     
         <h3>Songs of the Year</h3>
-        {/* <div className='artist'> 
-           <Favprofile/>
-            </div> */}
             <Favprofile image={Taylorswift} artist={"Taylor Swift"} song={"Blank Space"} url={"https://swar-app.s3.ap-south-1.amazonaws.com/Blank+Space"}/>
             <Favprofile image={ArianGrande} artist={"Arian Grande"} song={"7 Rings"} url={"https://swar-app.s3.ap-south-1.amazonaws.com/7+rings"}/>
             <Favprofile image={Hasley} artist={"Hasley"} song={"Without Me"} url={"https://swar-app.s3.ap-south-1.amazonaws.com/Without+me"}/>

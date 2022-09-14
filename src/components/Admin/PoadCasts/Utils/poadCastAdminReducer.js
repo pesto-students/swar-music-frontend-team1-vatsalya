@@ -24,7 +24,6 @@ export const poadCastAction = {
 export const poadCastsAdminReducer = (poadCasts = [], action) =>{
     switch(action.type){
         case poadCastConstants.GET_ALL_POADCAST_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 poadCasts : poadCasts
@@ -37,7 +36,6 @@ export const poadCastsAdminReducer = (poadCasts = [], action) =>{
         case poadCastConstants.GET_ALL_POADCAST_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return poadCasts;
    }
 }
@@ -45,7 +43,6 @@ export const poadCastsAdminReducer = (poadCasts = [], action) =>{
 export const deletePoadCastsAdminReducer = (audioBook = {}, action) =>{
     switch(action.type){
         case poadCastConstants.DELETE_POADCAST_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 audioBook : audioBook
@@ -58,7 +55,6 @@ export const deletePoadCastsAdminReducer = (audioBook = {}, action) =>{
         case poadCastConstants.DELETE_POADCAST_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return audioBook;
    }
 }
@@ -73,7 +69,6 @@ function getAllPoadCastAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: poadCastConstants.GET_ALL_POADCAST_REQUEST}
     }
     function success(poadCasts){
@@ -94,7 +89,6 @@ function  deletePoadCastAction(id){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: poadCastConstants.DELETE_POADCAST_REQUEST}
     }
     function success(poadCast){
@@ -111,33 +105,24 @@ export async function getAllPoadCast(){
           'Authorization':  token()
         }}).then(
           (res) => {
-            // setUsers(res.data);
-            console.log("poadCast")
-            console.log(res.data)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }
 
 export async function deletePoadCast(id){
-    console.log("this is the id =>" + id)
     return await axios.delete(`https://swar-music.herokuapp.com/api/poadcast/${id}`,{
         headers: {
           'Authorization':  token()
         }}).then(
           (res) => {
-            // setUsers(res.data);
-            console.log("poadCast")
-            console.log(res.data)
             showSuccessToast("PoadCast Has been deleted!")
             setTimeout(() => { window.location.reload(true)},1000)
             return res.data;
       
           }
         ).catch((err) => {
-          console.log(err);
         })
 }

@@ -24,7 +24,6 @@ export const audioBooksAction = {
 export const audioBooksAdminReducer = (audioBooks = [], action) =>{
     switch(action.type){
         case audioBooksConstants.GET_ALL_AUDIOBOOKS_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 audioBooks : audioBooks
@@ -37,7 +36,6 @@ export const audioBooksAdminReducer = (audioBooks = [], action) =>{
         case audioBooksConstants.GET_ALL_AUDIOBOOKS_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return audioBooks;
    }
 }
@@ -45,7 +43,6 @@ export const audioBooksAdminReducer = (audioBooks = [], action) =>{
 export const deleteAudioBooksAdminReducer = (audioBook = {}, action) =>{
     switch(action.type){
         case audioBooksConstants.DELETE_AUDIOBOOKS_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 audioBook : audioBook
@@ -58,7 +55,6 @@ export const deleteAudioBooksAdminReducer = (audioBook = {}, action) =>{
         case audioBooksConstants.DELETE_AUDIOBOOKS_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return audioBook;
    }
 }
@@ -73,7 +69,6 @@ function  getAllAudioBooksAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: audioBooksConstants.GET_ALL_AUDIOBOOKS_REQUEST}
     }
     function success(audioBooks){
@@ -94,7 +89,6 @@ function  deleteAudioBooksAction(id){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: audioBooksConstants.DELETE_AUDIOBOOKS_REQUEST}
     }
     function success(audioBook){
@@ -111,9 +105,6 @@ export async function getAllAudioBooks(){
           'Authorization':  token()
         }}).then(
           (res) => {
-            // setUsers(res.data);
-            console.log("audioBooks")
-            console.log(res.data)
             return res.data;
       
           }
@@ -123,19 +114,14 @@ export async function getAllAudioBooks(){
 }
 
 export async function deleteAudioBooks(id){
-    console.log("this is the id =>" + id)
     return await axios.delete(`https://swar-music.herokuapp.com/api/audiobooks/${id}`,{
         headers: {
           'Authorization':  token()
         }}).then(
           (res) => {
-            // setUsers(res.data);
-            console.log("audioBooks")
-            console.log(res.data)
             showSuccessToast("AudioBook Has been deleted!")
             setTimeout(() => { window.location.reload(true)},1000)
             return res.data;
-      
           }
         ).catch((err) => {
           console.log(err);

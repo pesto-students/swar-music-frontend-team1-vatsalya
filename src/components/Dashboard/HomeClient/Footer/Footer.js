@@ -11,7 +11,6 @@ import {Typography,IconButton} from '@mui/material';
 import './Footer.css';
 
 const Footer =({url, duration,name,play})=> {
-  console.log("---------------->url",url)
   const audioRef = useRef();
   const [isPlaying,setIsPlaying] = useState(play);
   const [currentTime, setCurrentTime] = useState();
@@ -25,8 +24,6 @@ const Footer =({url, duration,name,play})=> {
       setIsPlaying(!isPlaying);
   }
 
-  console.log("current Time-----")
-  console.log(currentTime);
    
   return (
     <div className='footer_body'>

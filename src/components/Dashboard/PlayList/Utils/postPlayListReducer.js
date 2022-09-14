@@ -279,7 +279,6 @@ function updatePlayListById(playListId,name){
 
 export async function createPlayListForm(user_id,name){
     const initialPlayListObject = {user_id: user_id, name: name};
-    console.log(initialPlayListObject)
     return await axios.post("https://swar-music.herokuapp.com/api/songs/post/playlist",initialPlayListObject,{
         headers: {
           'Authorization':  token()
@@ -301,8 +300,6 @@ export async function getAllPlayListByUserId(userId){
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log("welcome back user Id")
-            console.log(res.data);
             return res.data;
           }
         ).catch((err) => {
@@ -319,9 +316,7 @@ export async function addSongToPlayList(playListId,songsId){
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log("welcome back playList Songs")
             showSuccessToast("Song has Been added to Your PlayList")
-            console.log(res.data);
             return res.data;
           }
         ).catch((err) => {
@@ -336,8 +331,6 @@ export async function findSongsByPlayListId(playListId){
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log("welcome back Songs By PlayList")
-            console.log(res.data);
             return res.data;
           }
         ).catch((err) => {
@@ -353,7 +346,6 @@ export async function deletePlayListById(playListId){
         }}).then(
           (res) => {
             showSuccessToast("PlayList Has Been Deleted!")
-            console.log(res.data);
             setTimeout(() => { window.location.reload(true)},1000)
             
             return res.data;
@@ -365,7 +357,6 @@ export async function deletePlayListById(playListId){
 }
 
 export async function editPlayListById(playListId,name){
-    console.log("enter the edit playlist")
     const initialPlayListObject = {'name': name};
     return await axios.put(`https://swar-music.herokuapp.com/api/songs/update/playList/${playListId}`,initialPlayListObject,{
         headers: {
@@ -373,8 +364,6 @@ export async function editPlayListById(playListId,name){
         }}).then(
           (res) => {
             showSuccessToast("PlayList Has Been Updated")
-            console.log("PlayList Has Been Updated")
-            console.log(res.data);
             setTimeout(() => { window.location.reload(true)},1000)
             
             return res.data;

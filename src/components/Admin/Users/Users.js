@@ -109,8 +109,6 @@ const columns = [
 function Users() {
 
   const usersData = useSelector((state) => {
-    console.log("state")
-  console.log(state.usersReducer);
   return state.usersReducer
 })
 

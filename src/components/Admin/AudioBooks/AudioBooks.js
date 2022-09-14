@@ -163,7 +163,6 @@ const onSubmit = (e) => {
   console.log(retrieveUrlObject)
   axios.put('https://swar-music.herokuapp.com/api/audioBooks/upload/retrieve',retrieveUrlObject).then(
     (res) =>{
-      console.log(res.data)
       const formData = new FormData();
       formData.append('file', file);
       axios
@@ -176,14 +175,10 @@ const onSubmit = (e) => {
       setTimeout(() => { window.location.reload(true)},1000)
     }).catch((error) =>{
       showErrorToast("Unable to add AudioBooks to S3 bucket!")
-      console.log(error);
     })
-    console.log(file)
     setOpen(false);
 }
 const audioBooksData = useSelector((state) => {
-  console.log("audioBooks selector")
-console.log(state.audioBooksAdminReducer);
 return state.audioBooksReducer
 })
 

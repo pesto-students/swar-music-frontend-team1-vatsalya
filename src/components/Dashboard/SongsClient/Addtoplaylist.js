@@ -78,8 +78,6 @@ NewDialogTitle.propTypes = {
 };
 
  function Addtoplaylist({rowId}) {
-  console.log(rowId)
-
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
@@ -112,9 +110,7 @@ const fetchPlayList = () =>{
     'Authorization':  token()
   }}).then(
     (res) => {
-      console.log("welcome back user Id")
       setData(res.data)
-      console.log(res.data);
       return res.data;
     }
   ).catch((err) => {
@@ -171,7 +167,7 @@ useEffect(() =>{
             >
               {item.name}
           </Typography>
-            <IconButton onClick={() => {console.log("key Id =======>" + item._id)
+            <IconButton onClick={() => {
             dispatch(playListAction.addSongsToPlayListAction(item._id,rowId))
          }}> <AddIcon/></IconButton> 
                 </Stack>

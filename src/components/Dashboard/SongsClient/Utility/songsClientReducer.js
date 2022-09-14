@@ -44,7 +44,6 @@ function getAllSongByNameAction(name){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: songsConstants.GET_SONGS_BY_NAME_REQUEST}
     }
     function success(song){
@@ -61,12 +60,9 @@ export async function findSongsByName(name){
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log("songs name by response----")
-            console.log(res.data)
             return res.data;
           }
         ).catch((err) => {
-          console.log(err);
           return err;
         })
 }

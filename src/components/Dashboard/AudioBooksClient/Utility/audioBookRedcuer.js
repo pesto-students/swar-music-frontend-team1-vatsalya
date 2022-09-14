@@ -23,7 +23,6 @@ export const audioBooksAction = {
 export const audioBooksReducer = (audioBooks = [], action) =>{
     switch(action.type){
         case audioBooksConstants.GET_ALL_AUDIOBOOKS_REQUEST:
-            console.log("enter")
             return {
                 loggingIn: true,
                 audioBooks : audioBooks
@@ -36,7 +35,6 @@ export const audioBooksReducer = (audioBooks = [], action) =>{
         case audioBooksConstants.GET_ALL_AUDIOBOOKS_FAILURE:
                 return {};
         default:
-            console.log("enter")
             return audioBooks;
    }
 }
@@ -69,7 +67,6 @@ function getAllAudioBooksAction(){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: audioBooksConstants.GET_ALL_AUDIOBOOKS_REQUEST}
     }
     function success(audioBooks){
@@ -90,7 +87,6 @@ function getAllAudioBookByNameAction(name){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: audioBooksConstants.GET_AUDIOBOOKS_BY_NAME_REQUEST}
     }
     function success(audioBook){
@@ -107,9 +103,6 @@ export async function getAllAudioBooks(){
           'Authorization': token()
         }}).then(
           (res) => {
-            // setUsers(res.data);
-            console.log("audioBooks")
-            console.log(res.data)
             return res.data;
       
           }
@@ -121,12 +114,9 @@ export async function getAllAudioBooks(){
 export async function findAudioBooksByName(name){
     return await axios.get(`https://swar-music.herokuapp.com/api/audiobooks/name/${name}`).then(
           (res) => {
-            console.log("audioBooks name by response----")
-            console.log(res.data)
             return res.data;
           }
         ).catch((err) => {
-          console.log(err);
           return err;
         })
 }

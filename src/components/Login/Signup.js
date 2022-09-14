@@ -58,7 +58,6 @@ const dispatch = useDispatch();
 
 const handleSubmit = (e) =>{
   e.preventDefault();
-  console.log("enter submit form-----")
   if(userName && email && password && confirmPassword && country){
     dispatch(registerAction.signUpActions(userName,email,password,confirmPassword,country))
   }

@@ -23,12 +23,7 @@ function SideNavBar() {
     mt:0,
   mr:'auto'
   }} /> 
-        {/* <div className="dashboard">
-        <h3 className="sidebarTitle">Dashboard </h3>
-        <div className='bars'>
-          <DensitySmallIcon />
-        </div>
-        </div> */}
+       
         <ul className="sidebarList">
         <Link style={{textDecoration: 'none'}} to="/home">
           <li className= "sidebarListItem" >

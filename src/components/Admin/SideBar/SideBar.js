@@ -12,11 +12,9 @@ function SideBar() {
   const [state, setState] = useState("");
   const[isOpen, setIsOpen] = useState(false);
   const toogle = () =>{
-    console.log("toogle")
     setIsOpen(!isOpen);
   }
   const activeLink = () =>{
-    console.log("I am clicked!")
     setState("sidebarListItem active")
   }
   return (
@@ -31,12 +29,6 @@ function SideBar() {
   mr:'auto'
   }} /> 
         <div className="sidebarMenu">
-          {/* <div className="dashboard" style={{display: isOpen ? "inline-block" : "flex", padding: isOpen ? "5px" : ""}}>     
-          <h3 className="sidebarTitle" style={{display: isOpen ? "none" : "flex"}}>Dashboard </h3>
-          <div className='bars'>
-            <DensitySmallIcon onClick={toogle}/>
-          </div>
-          </div> */}
           <ul className="sidebarList">
             <Link style={{textDecoration: 'none'}} to="/admin">
             <li className= "sidebarListItem" style={{padding: isOpen ? "0" : "5px"}}  onClick={activeLink}>
