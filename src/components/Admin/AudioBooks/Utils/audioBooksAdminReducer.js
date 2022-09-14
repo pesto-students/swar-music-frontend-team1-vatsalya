@@ -109,7 +109,7 @@ export async function getAllAudioBooks(){
       
           }
         ).catch((err) => {
-          console.log(err);
+          return err;
         })
 }
 
@@ -124,6 +124,6 @@ export async function deleteAudioBooks(id){
             return res.data;
           }
         ).catch((err) => {
-          console.log(err);
+          return err;
         })
 }

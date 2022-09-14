@@ -107,7 +107,7 @@ export async function getAllAudioBooks(){
       
           }
         ).catch((err) => {
-          console.log(err);
+          return err;
         })
 }
 

@@ -51,7 +51,6 @@ const onChangeCountry =(e) => {
 }
 
 const register = useSelector((state) =>{
-  console.log(state.submitUserReducer)
   return state.submitUserReducer
 })
 const dispatch = useDispatch();

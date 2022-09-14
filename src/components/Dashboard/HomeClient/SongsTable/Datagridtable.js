@@ -124,18 +124,11 @@ export default function App() {
   const[name,setName] = useState("Kesari");
   const[duration, setDuration] = useState("4:29")
   const songsData = useSelector((state) => {
-      console.log("songs selector")
-    console.log(state.songsReducer);
     return state.songsReducer
     })
     const songsByName = useSelector((state) => {
-      console.log("find By song selector")
-    console.log(state.findSongByNameReducer);
     return state.findSongByNameReducer
     })
-
-    console.log("--------songsByName")
-    console.log(songsByName.song);
     
     const dispatch = useDispatch();
     useMemo( () => {
@@ -152,15 +145,7 @@ export default function App() {
             setName(params.row.name)
             setDuration(params.row.duration)
         };
-        sessionStorage.setItem("name", name);
-        console.log("name----")
-        console.log(name)
-
-        console.log("index------")
-        console.log(duration)
-
-        console.log("url------")
-        console.log(url);
+        
 
   return (
     <div className='datatable' style={{ height: 300, width:800 }}>

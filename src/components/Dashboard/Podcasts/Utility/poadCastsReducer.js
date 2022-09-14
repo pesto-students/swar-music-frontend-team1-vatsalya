@@ -107,7 +107,7 @@ export async function getAllPoadCasts(){
       
           }
         ).catch((err) => {
-          console.log(err);
+          return err;
         })
 }
 

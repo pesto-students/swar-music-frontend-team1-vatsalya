@@ -121,15 +121,12 @@ function Playlist() {
       const songsByName = useSelector((state) => {
       return state.findSongByNameReducer
       })
-
-      console.log(tableData);
       
       useMemo( () => {
         dispatch(songsAction.getAllSongsAction())
       },[])
 
       const displayTable = () =>{
-        console.log("hello all songs table")
         setTableData(songsData.songs)
       }
 
@@ -146,8 +143,6 @@ function Playlist() {
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log("welcome back Songs By PlayList")
-            console.log(res.data);
             setTableData(res.data);
             return res.data;
           }
@@ -163,9 +158,7 @@ function Playlist() {
           'Authorization':  token()
         }}).then(
           (res) => {
-            console.log("welcome back user Id")
             setPlayListData(res.data)
-            console.log(res.data);
             return res.data;
           }
         ).catch((err) => {

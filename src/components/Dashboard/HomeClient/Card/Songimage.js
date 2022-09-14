@@ -30,13 +30,8 @@ const SliderData = [
 function Songimage() {
   const [current, setCurrent] = useState(0);
   const[artist, setArtist] = useState("Kesari");
-  console.log("current----")
-  console.log(current);
   const [url, setUrl] = useState("");
-  console.log("url-----")
-  console.log(url)
   const length = SliderData.length;
-  console.log("length----" + length)
   
   const audioRef = useRef();
   const songsRef = useRef();
@@ -47,10 +42,6 @@ function Songimage() {
     setArtist(nameRef.current.value)
   },[songsRef.current])
 
-  // useEffect(()=>{
-  //   setArtist(nameRef.current.value)
-  // },[nameRef.current.value])
-  console.log(songsRef)
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
@@ -89,11 +80,6 @@ function Songimage() {
   </div>
   <div className='cover'> 
       {SliderData.map((slide, index) => {
-        console.log("index")
-        console.log(index)
-
-        console.log("current")
-        console.log(current)
         return (
           <div
             className={index === current ? 'slide active' : 'slide'}

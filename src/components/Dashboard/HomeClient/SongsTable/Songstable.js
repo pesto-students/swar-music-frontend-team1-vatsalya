@@ -4,7 +4,6 @@ import React ,{useState}from 'react'
 
 function SongsTable() {
   const [selectedRow, setSelectedRow] = useState({});
-  console.log({ selectedRow });
   return (
     <TableContainer sx={{ml:'60px'}} >
       <Table aria-label='simple table'

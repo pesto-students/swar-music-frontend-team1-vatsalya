@@ -164,7 +164,6 @@ function deletePlayListAction(playListId){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: playListConstants.DELETE_PLAYLIST_BY_ID_REQUEST}
     }
     function success(playList){
@@ -245,7 +244,6 @@ function getAllPlayListByIdAction(userId){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: playListConstants.GET_PLAYLIST_BY_ID_REQUEST}
     }
     function success(playList){
@@ -266,7 +264,6 @@ function updatePlayListById(playListId,name){
             );
     };
     function request(){
-        console.log("enter request")
         return {type: playListConstants.UPDATE_PLAYLIST_BY_ID_REQUEST}
     }
     function success(playList){
@@ -310,7 +307,6 @@ export async function getAllPlayListByUserId(userId){
 
 export async function addSongToPlayList(playListId,songsId){
     const initialPlayListObject = {_id: songsId};
-    console.log(initialPlayListObject)
     return await axios.post(`https://swar-music.herokuapp.com/api/songs/add/playlist/songs/${playListId}` ,initialPlayListObject,{
         headers: {
           'Authorization':  token()

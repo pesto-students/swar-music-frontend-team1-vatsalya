@@ -10,8 +10,6 @@ import {IconButton } from '@mui/material'
 import '../../components/Admin/Songs/songs.css'
 
 function ConfirmModel(props) {
-    console.log("enter confirm model")
-    console.log(props.rowId)
     const dispatch = useDispatch();
 
 

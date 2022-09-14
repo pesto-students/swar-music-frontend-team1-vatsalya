@@ -154,8 +154,6 @@ const onSubmit = (e) => {
     "speaker": speaker,
     "duration": duration
   }
-
-  console.log(retrieveUrlObject)
   axios.put('https://swar-music.herokuapp.com/api/poadcast/upload/retrieve',retrieveUrlObject).then(
     (res) =>{
       const formData = new FormData();
