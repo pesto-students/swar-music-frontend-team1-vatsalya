@@ -41,18 +41,16 @@ function Login({handleChange}) {
 
     const submitGuestUser = (e) =>{
       e.preventDefault();
-      if(userName  && password){
-        const {from} = location.state || {from: {pathname: "/home"}};
-        dispatch(registerAction.logInActions("TestUser01","test12345",from)) 
-      }
+      const {from} = location.state || {from: {pathname: "/home"}};
+      dispatch(registerAction.logInActions("TestUser01","test12345",from)) 
+      
     }
 
     const submitGuestAdmin = (e) =>{
       e.preventDefault();
-      if(userName  && password){
-        const {from} = location.state || {from: {pathname: "/home"}};
-        dispatch(registerAction.logInActions("SysAdmin7","password-a",from)) 
-      }
+      const {from} = location.state || {from: {pathname: "/home"}};
+      dispatch(registerAction.logInActions("SysAdmin7","password-a",from)) 
+      
     }
 
   return (
