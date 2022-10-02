@@ -5,6 +5,7 @@ import {Grid,Paper,Avatar,FormControlLabel,Checkbox,Button, Typography, Link,Box
 import { registerAction } from './Utility/authenticatinReducer';
 import { useLocation } from "react-router-dom";
 import SignInImage from './SignInImage.png';
+import Divider from '@mui/material/Divider';
 
 
 function Login({handleChange}) { 
@@ -38,6 +39,22 @@ function Login({handleChange}) {
     
     }
 
+    const submitGuestUser = (e) =>{
+      e.preventDefault();
+      if(userName  && password){
+        const {from} = location.state || {from: {pathname: "/home"}};
+        dispatch(registerAction.logInActions("TestUser01","test12345",from)) 
+      }
+    }
+
+    const submitGuestAdmin = (e) =>{
+      e.preventDefault();
+      if(userName  && password){
+        const {from} = location.state || {from: {pathname: "/home"}};
+        dispatch(registerAction.logInActions("SysAdmin7","password-a",from)) 
+      }
+    }
+
   return (
     <Grid>
         <Paper elevation={20} style={paperstyle}>
@@ -50,6 +67,16 @@ function Login({handleChange}) {
             <Stack direction='row' alignItems='center' sx={{ justifyContent:'center',mt:'5px',mb:'5px'}} spacing={2}>
             <h2>Welcome Back</h2>
             </Stack>
+            <div className="guestUsers">
+              <Button variant="contained"
+              onClick={submitGuestAdmin}
+              > GUEST ADMIN</Button>
+              <Button 
+               onClick={submitGuestUser}
+              variant="contained"> GUEST USER</Button>
+            </div>
+
+            <div className="seperator"> <Divider />Or</div>
             </Grid>
             <form onSubmit={handleSubmit}>
             <input type="text" placeholder='username' onChange={onChangeUserName} required/>

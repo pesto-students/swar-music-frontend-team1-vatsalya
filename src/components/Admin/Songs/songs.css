@@ -44,3 +44,12 @@ input[type=submit]:hover {
   box-sizing: border-box;
   border-radius: 25px
 }
+
+.guestUsers{
+  display: flex;
+  justify-content: space-between;
+}
+
+.seperator{
+  padding-top: 5%;
+}
