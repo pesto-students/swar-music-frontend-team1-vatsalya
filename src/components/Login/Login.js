@@ -68,12 +68,16 @@ function Login({handleChange}) {
             <h2>Welcome Back</h2>
             </Stack>
             <div className="guestUsers">
+              <form onSubmit={submitGuestAdmin}>
               <Button variant="contained"
-              onClick={submitGuestAdmin}
+              type='submit'
               > GUEST ADMIN</Button>
+              </form>
+              <form onSubmit={submitGuestUser}>
               <Button 
-               onClick={submitGuestUser}
+              type='submit'
               variant="contained"> GUEST USER</Button>
+              </form>
             </div>
 
             <div className="seperator"> <Divider />Or</div>
