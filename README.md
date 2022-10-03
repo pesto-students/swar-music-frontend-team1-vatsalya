@@ -1,40 +1,72 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3a60744f-678f-4f08-a360-7d2e2dcb6560/deploy-status)](https://swar-music.netlify.app/)
+
 # SWAR MUSIC
 
-Swar music is a music player, on which users can listen to music,poadcastand audioBooks.On other hand users can create,edit and delete their playlist.
+![Logo](https://swar-app.s3.ap-south-1.amazonaws.com/SwarLogo.png)
+
+Swar music is a music player, on which users can listen to music,poadcast and audioBooks.On other hand users can create,edit and delete their playlist.
 
 There are two types of users:
 
-1.Admin user - Admin will able upload songs,poadcast and audiobooks to s3 bucket
+- Admin user - Admin will able upload songs,poadcast and audiobooks to s3 bucket
 
-2.Client user - Client will able to listen to music,poadcast and audiobooks.Whereas they
-can also create,edit and delete playlist.
+- Client user - Client will able to listen to music,poadcast and audiobooks.Whereas they
+  can also create,edit and delete playlist.
 
-Technology stack:
+# Table of Contents
 
-FrontEnd: React js,Material UI and Chartjs
+1. [Demo](#demo)
+2. [Installation](#installation)
+3. [Technology Stack](#technology-stack)
+4. [Authors](#authors)
+5. [License](#license)
 
-BackEnd: Nodejs and Express js
+## Demo
 
-DataBase: MongoDB
+[Live Demo](https://swar-music.netlify.app/)
 
-CloudStorage: AWS s3 bucket
+Please Note:
 
-Link - https://swar-music.netlify.app/
+1. We recommend using this app in Google Chrome
+2. Use the app on Laptop/desktop only as of now.
+3. We are using Auth0 for authentication, so for recruiter login, please don't use Safari, as it blocks third-party cookies.
 
-PRD - https://docs.google.com/document/d/1TyxP5sbFscZVXm45qLKtebwfGlDtgJLx9jQjRp07PhI/edit?usp=sharing
+Test Credentials
 
-HLD - https://drive.google.com/file/d/1xueBx8ZRPTbhap5F3PkhirFvftsOgb74/view?usp=sharing
+- For Admin:
+  - Username : SysAdmin7
+  - Password: password-a
+- For User:
+  - Username: TestUser01
+  - Password: test12345
 
-SCREEN SHORTS:
+Please Note:
 
-Check out the link -> https://docs.google.com/document/d/1--PI3ilEGBawKokIYXlAfZ7vwigESn_1ul2nVARH-6o/edit?usp=sharing
+## Installation
 
-DEPENDENCIES:
-In order to run this project, node should be installed in the pc.
+Install my-project with npm
 
-CONFIGURATION:
+```bash
+  1.Fork or directly clone this repository to your local machine
+  2.Use the npm install command to install dependencies.
+  3.Once the dependencies are finished installing, use the npm start command inside the root directory to open the app in your local browser of choice
+```
 
-1. Take a clone of the the project - https://github.com/pesto-students/swar-music-frontend-team1-vatsalya.git.
-2. Open the project in your editor and open the terminal.
-3. Install node modules by running command npm install.
-4. Once node module folder is created, start your project by npm start.
+## Technology Stack
+
+**Client:** React, Redux, Material UI
+
+**Server:** Node, Express JS, [Herkou](https://swar-music.herokuapp.com/)
+
+**Authentication:** JWT
+
+**Cloud Storage:** AWS S3 bucket
+
+## Authors
+
+- [Himanshu Vansal](https://github.com/himanshuvansal01)
+- [Shantanu Kale](https://github.com/martianshaan)
+
+## LICENSE
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
