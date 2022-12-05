@@ -138,7 +138,7 @@ function Playlist() {
       },[name])
 
       const fetch =  (playListId) =>{
-        axios.get(`https://swar-music.herokuapp.com/api/songs/find/playlist/songs/${playListId}`,{
+        axios.get(`https://swar-music.onrender.com/api/songs/find/playlist/songs/${playListId}`,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -153,7 +153,7 @@ function Playlist() {
       }
 
       const fetchPlayList = () =>{
-        axios.get(`https://swar-music.herokuapp.com/api/songs/get/playlist/${jwtDecode(token()).id}`,{
+        axios.get(`https://swar-music.onrender.com/api/songs/get/playlist/${jwtDecode(token()).id}`,{
         headers: {
           'Authorization':  token()
         }}).then(

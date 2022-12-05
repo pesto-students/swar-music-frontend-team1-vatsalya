@@ -105,7 +105,7 @@ function logInActions(username,password,home){
 export async function registerForm(username,email,password,confirmPassword,country){
     const initialSignUpObject = {username: username, email: email, password: password, confirmPassword: confirmPassword,
     country: country};
-    return await axios.post("https://swar-music.herokuapp.com/api/auth/register",initialSignUpObject).then(
+    return await axios.post("https://swar-music.onrender.com/api/auth/register",initialSignUpObject).then(
           (res) => {
             showSuccessToast("Thank you for signing up with us!")
             return res.data;
@@ -118,7 +118,7 @@ export async function registerForm(username,email,password,confirmPassword,count
 
 export async function logInForm(username,password,from){
     const initialSignUpObject = {username: username, password: password};
-    return await axios.post("https://swar-music.herokuapp.com/api/auth/login",initialSignUpObject).then(
+    return await axios.post("https://swar-music.onrender.com/api/auth/login",initialSignUpObject).then(
           (res) => {
             localStorage.setItem('Token', res.data);
             const user = jwtDecode(res.data);

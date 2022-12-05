@@ -30,7 +30,7 @@ function PieChart() {
     const label = [];
     const data = [];
 
-    axios.get("https://swar-music.herokuapp.com/api/users/country/count/all",{
+    axios.get("https://swar-music.onrender.com/api/users/country/count/all",{
       headers: {
         'Authorization':  token()
       }}).then(

@@ -100,7 +100,7 @@ function  deleteUsersAction(id){
 }
 
 export async function getAllUsers(){
-    return await axios.get("https://swar-music.herokuapp.com/api/users",{
+    return await axios.get("https://swar-music.onrender.com/api/users",{
         headers: {
           'Authorization': token()
         }}).then(
@@ -113,7 +113,7 @@ export async function getAllUsers(){
 }
 
 export async function deleteUsers(id){
-    return await axios.delete(`https://swar-music.herokuapp.com/api/users/${id}`,{
+    return await axios.delete(`https://swar-music.onrender.com/api/users/${id}`,{
         headers: {
           'Authorization':  token()
         }}).then(

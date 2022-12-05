@@ -98,7 +98,7 @@ function getAllAudioBookByNameAction(name){
 }
 
 export async function getAllAudioBooks(){
-    return await axios.get("https://swar-music.herokuapp.com/api/audiobooks",{
+    return await axios.get("https://swar-music.onrender.com/api/audiobooks",{
         headers: {
           'Authorization': token()
         }}).then(
@@ -112,7 +112,7 @@ export async function getAllAudioBooks(){
 }
 
 export async function findAudioBooksByName(name){
-    return await axios.get(`https://swar-music.herokuapp.com/api/audiobooks/name/${name}`).then(
+    return await axios.get(`https://swar-music.onrender.com/api/audiobooks/name/${name}`).then(
           (res) => {
             return res.data;
           }

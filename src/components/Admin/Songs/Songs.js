@@ -157,7 +157,7 @@ const onSubmit = (e) => {
     "artist": artist,
     "duration": duration
   }
-  axios.put(' https://swar-music.herokuapp.com/api/songs/upload/retrieve',retrieveUrlObject).then(
+  axios.put(' https://swar-music.onrender.com/api/songs/upload/retrieve',retrieveUrlObject).then(
     (res) =>{
       const formData = new FormData();
       formData.append('file', file);

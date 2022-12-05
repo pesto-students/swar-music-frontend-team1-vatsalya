@@ -55,7 +55,7 @@ function getAllSongByNameAction(name){
 }
 
 export async function findSongsByName(name){
-    return await axios.get(`https://swar-music.herokuapp.com/api/songs/name/${name}`,{
+    return await axios.get(`https://swar-music.onrender.com/api/songs/name/${name}`,{
         headers: {
           'Authorization':  token()
         }}).then(

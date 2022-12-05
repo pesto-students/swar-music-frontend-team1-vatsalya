@@ -100,7 +100,7 @@ function  deletePoadCastAction(id){
 }
 
 export async function getAllPoadCast(){
-    return await axios.get("https://swar-music.herokuapp.com/api/poadcast",{
+    return await axios.get("https://swar-music.onrender.com/api/poadcast",{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -113,7 +113,7 @@ export async function getAllPoadCast(){
 }
 
 export async function deletePoadCast(id){
-    return await axios.delete(`https://swar-music.herokuapp.com/api/poadcast/${id}`,{
+    return await axios.delete(`https://swar-music.onrender.com/api/poadcast/${id}`,{
         headers: {
           'Authorization':  token()
         }}).then(

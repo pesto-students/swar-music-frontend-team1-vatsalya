@@ -55,7 +55,7 @@ Install my-project with npm
 
 **Client:** React, Redux, Material UI
 
-**Server:** Node, Express JS, [Herkou](https://swar-music.herokuapp.com/)
+**Server:** Node, Express JS, [Rendor](https://swar-music.onrender.com/)
 
 **Authentication:** JWT
 

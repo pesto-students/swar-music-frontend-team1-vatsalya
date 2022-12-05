@@ -100,7 +100,7 @@ function  deleteAudioBooksAction(id){
 }
 
 export async function getAllAudioBooks(){
-    return await axios.get("https://swar-music.herokuapp.com/api/audiobooks",{
+    return await axios.get("https://swar-music.onrender.com/api/audiobooks",{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -114,7 +114,7 @@ export async function getAllAudioBooks(){
 }
 
 export async function deleteAudioBooks(id){
-    return await axios.delete(`https://swar-music.herokuapp.com/api/audiobooks/${id}`,{
+    return await axios.delete(`https://swar-music.onrender.com/api/audiobooks/${id}`,{
         headers: {
           'Authorization':  token()
         }}).then(

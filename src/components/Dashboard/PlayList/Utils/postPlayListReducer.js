@@ -276,7 +276,7 @@ function updatePlayListById(playListId,name){
 
 export async function createPlayListForm(user_id,name){
     const initialPlayListObject = {user_id: user_id, name: name};
-    return await axios.post("https://swar-music.herokuapp.com/api/songs/post/playlist",initialPlayListObject,{
+    return await axios.post("https://swar-music.onrender.com/api/songs/post/playlist",initialPlayListObject,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -292,7 +292,7 @@ export async function createPlayListForm(user_id,name){
 }
 
 export async function getAllPlayListByUserId(userId){
-    return await axios.get(`https://swar-music.herokuapp.com/api/songs/get/playlist/${userId}`,{
+    return await axios.get(`https://swar-music.onrender.com/api/songs/get/playlist/${userId}`,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -307,7 +307,7 @@ export async function getAllPlayListByUserId(userId){
 
 export async function addSongToPlayList(playListId,songsId){
     const initialPlayListObject = {_id: songsId};
-    return await axios.post(`https://swar-music.herokuapp.com/api/songs/add/playlist/songs/${playListId}` ,initialPlayListObject,{
+    return await axios.post(`https://swar-music.onrender.com/api/songs/add/playlist/songs/${playListId}` ,initialPlayListObject,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -322,7 +322,7 @@ export async function addSongToPlayList(playListId,songsId){
 }
 
 export async function findSongsByPlayListId(playListId){
-    return await axios.get(`https://swar-music.herokuapp.com/api/songs/find/playlist/songs/${playListId}`,{
+    return await axios.get(`https://swar-music.onrender.com/api/songs/find/playlist/songs/${playListId}`,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -336,7 +336,7 @@ export async function findSongsByPlayListId(playListId){
 }
 
 export async function deletePlayListById(playListId){
-    return await axios.delete(`https://swar-music.herokuapp.com/api/songs/playList/${playListId}`,{
+    return await axios.delete(`https://swar-music.onrender.com/api/songs/playList/${playListId}`,{
         headers: {
           'Authorization':  token()
         }}).then(
@@ -354,7 +354,7 @@ export async function deletePlayListById(playListId){
 
 export async function editPlayListById(playListId,name){
     const initialPlayListObject = {'name': name};
-    return await axios.put(`https://swar-music.herokuapp.com/api/songs/update/playList/${playListId}`,initialPlayListObject,{
+    return await axios.put(`https://swar-music.onrender.com/api/songs/update/playList/${playListId}`,initialPlayListObject,{
         headers: {
           'Authorization':  token()
         }}).then(
